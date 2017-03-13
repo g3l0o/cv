@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">CV</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="menu_academy">Educación</string>
+    <string name="menu_certifications">Certificaciones y Cursos</string>
+    <string name="menu_experience">Experiencia Laboral</string>
+    <string name="menu_extracurricular">A. Extracurriculares</string>
+    <string name="menu_languages">Idiomas</string>
+    <string name="menu_communicate">Contacto</string>
+    <string name="menu_send">Enviar CV</string>
+
+
+</resources>

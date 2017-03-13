@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "873466505230",
+    "firebase_url": "https://roger-cv.firebaseio.com",
+    "project_id": "roger-cv",
+    "storage_bucket": "roger-cv.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:873466505230:android:752b63fa19191e96",
+        "android_client_info": {
+          "package_name": "com.roger.cv"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "873466505230-8nc1kodioprs7igon84bqb2vnse4u9ju.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYK-WgYi0ciq0dDIXERngTCMaqA2L2c1g"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

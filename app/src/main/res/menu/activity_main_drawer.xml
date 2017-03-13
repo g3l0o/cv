@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_academy"
+            android:icon="@drawable/ic_academy"
+            android:title="@string/menu_academy" />
+        <item
+            android:id="@+id/nav_experience"
+            android:icon="@drawable/ic_work"
+            android:title="@string/menu_experience" />
+        <item
+            android:id="@+id/nav_certifications"
+            android:icon="@drawable/ic_class"
+            android:title="@string/menu_certifications" />
+        <item
+            android:id="@+id/nav_extracurricular"
+            android:icon="@drawable/ic_extracurricular"
+            android:title="@string/menu_extracurricular" />
+    </group>
+
+    <item android:title="@string/menu_communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_sendCV"
+                android:icon="@drawable/ic_send"
+                android:title="@string/menu_send" />
+        </menu>
+    </item>
+
+</menu>
