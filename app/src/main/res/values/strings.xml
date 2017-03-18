@@ -12,6 +12,7 @@
     <string name="menu_languages">Idiomas</string>
     <string name="menu_communicate">Contacto</string>
     <string name="menu_send">Enviar CV</string>
+    <string name="title_activity_information">Información</string>
 
 
 </resources>
