@@ -15,6 +15,11 @@ public class Company implements Parcelable {
     private String name;
     private String startDate;
 
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getCurrent() {
         return current;
     }
@@ -38,6 +43,7 @@ public class Company implements Parcelable {
     public String getStartDate() {
         return startDate;
     }
+
 
     @Override
     public int describeContents() {

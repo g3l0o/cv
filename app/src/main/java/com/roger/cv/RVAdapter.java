@@ -1,13 +1,24 @@
 package com.roger.cv;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
+import java.io.ByteArrayInputStream;
 import java.util.List;
 
 /**
@@ -32,7 +43,10 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CompanyHolder>{
         }
     }
 
+    final long ONE_MEGABYTE = 1024 * 1024;
     List<Company> companies;
+    ViewGroup parent;
+
 
     RVAdapter(List<Company> companies){
         this.companies = companies;
@@ -46,15 +60,32 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CompanyHolder>{
 
     @Override
     public CompanyHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        this.parent = parent;
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.company_item, parent, false);
         CompanyHolder ch = new CompanyHolder(v);
         return ch;
     }
 
     @Override
-    public void onBindViewHolder(CompanyHolder holder, int position) {
-        holder.companyName.setText(companies.get(position).getName());
-        holder.companyDescription.setText(companies.get(position).getDescription());
+    public void onBindViewHolder(final CompanyHolder holder, int position) {
+        Company company = companies.get(position);
+        holder.companyName.setText(company.getName());
+        holder.companyDescription.setText(company.getDescription());
+
+        if(!company.getLogo().isEmpty()){
+            FirebaseStorage storage = FirebaseStorage.getInstance();
+            StorageReference storageRef = storage.getReferenceFromUrl("gs://roger-cv.appspot.com").child(company.getLogo());
+            storageRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+                @Override
+                public void onSuccess(byte[] bytes) {
+                    ByteArrayInputStream imageStream = new ByteArrayInputStream(bytes);
+                    Bitmap bm = BitmapFactory.decodeStream(imageStream);
+                    RoundedBitmapDrawable rid = RoundedBitmapDrawableFactory.create(parent.getContext().getResources(), bm);
+                    rid.setCircular(true);
+                    holder.companyLogo.setImageDrawable(rid);
+                }
+            });
+        }
     }
 
 
