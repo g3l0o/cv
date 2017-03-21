@@ -9,6 +9,8 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -34,11 +36,16 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.io.ByteArrayInputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     final long ONE_MEGABYTE = 1024 * 1024;
+
+    private List<Company> companies;
+    private RecyclerView recyclerViewCompanies;
 
     private Toolbar toolbar;
     private DrawerLayout drawer;
@@ -79,22 +86,25 @@ public class MainActivity extends AppCompatActivity
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         navigationView = (NavigationView) findViewById(R.id.nav_view);
 
+        recyclerViewCompanies = (RecyclerView) findViewById(R.id.rv_card_view_company);
+
         navigationViewHeader = navigationView.getHeaderView(0);
         headerLayout = (LinearLayout) navigationViewHeader.findViewById(R.id.headerLayout);
         nameHeaderLayout = (TextView) navigationViewHeader.findViewById(R.id.nameTextView);
         mailHeaderLayout = (TextView) navigationViewHeader.findViewById(R.id.emailTextView);
         profileImage = (ImageButton) navigationViewHeader.findViewById(R.id.profile_image_drawer);
 
-
+        navigationView.setNavigationItemSelectedListener(this);
         setSupportActionBar(toolbar);
+
+        LinearLayoutManager llm = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        recyclerViewCompanies.setLayoutManager(llm);
+        recyclerViewCompanies.setHasFixedSize(true);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
-
-
-        navigationView.setNavigationItemSelectedListener(this);
 
         headerLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -140,8 +150,36 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        //get Image from FB
+        mCVDatabaseReference.child("experience").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
 
+                companies = new ArrayList<Company>();
+                for(DataSnapshot ds : dataSnapshot.getChildren()){
+                    companies.add(ds.getValue(Company.class));
+                }
+
+                RVAdapter adapter = new RVAdapter(companies);
+                recyclerViewCompanies.setAdapter(adapter);
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        profileImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in = new Intent(getBaseContext(), InformationActivity.class);
+                in.putExtra("information", information);
+                in.putExtra("imageBytes" , imageBytes);
+
+                startActivity(in);
+            }
+        });
 
     }
 
@@ -165,5 +203,6 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 
 }
