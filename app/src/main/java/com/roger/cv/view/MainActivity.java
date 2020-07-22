@@ -1,70 +1,36 @@
-package com.roger.cv;
+package com.roger.cv.view;
 
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+
 import android.os.Bundle;
 
-import androidx.core.graphics.drawable.RoundedBitmapDrawable;
-import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.view.View;
-import com.google.android.material.navigation.NavigationView;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.NavigationUI;
 
-import android.view.MenuItem;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import com.roger.cv.R;
 
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
+public class MainActivity extends AppCompatActivity {
 
-import java.io.ByteArrayInputStream;
-import java.util.ArrayList;
-import java.util.List;
+    private NavController navController;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-    final long ONE_MEGABYTE = 1024 * 1024;
+        navController = Navigation.findNavController(this, R.id.navHostFragment);
+        NavigationUI.setupActionBarWithNavController(this, navController);
+    }
 
-    private List<Company> companies;
-    private RecyclerView recyclerViewCompanies;
+    @Override
+    public boolean onSupportNavigateUp() {
+        return NavigationUI.navigateUp(navController, (DrawerLayout) null);
+    }
 
-    private Toolbar toolbar;
-    private DrawerLayout drawer;
-    private NavigationView navigationView;
-    private View navigationViewHeader;
-    private LinearLayout headerLayout;
-    private TextView nameHeaderLayout;
-    private TextView mailHeaderLayout;
-    private ImageButton profileImage;
-
-    private FirebaseDatabase mFirebaseDatabase;
-    private DatabaseReference mCVDatabaseReference;
-
-    private FirebaseStorage storage;
-    private StorageReference storageRef;
-
-    private String mUsaerName;
-
-    private Information information;
-
-    private byte[] imageBytes;
-
+    /*
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -200,6 +166,7 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+*/
 
 
 }

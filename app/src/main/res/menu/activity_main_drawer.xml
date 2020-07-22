@@ -9,7 +9,7 @@
         <item
             android:id="@+id/nav_experience"
             android:icon="@drawable/ic_work"
-            android:title="@string/menu_experience" />
+            android:title="@string/experience_label" />
         <item
             android:id="@+id/nav_certifications"
             android:icon="@drawable/ic_class"
