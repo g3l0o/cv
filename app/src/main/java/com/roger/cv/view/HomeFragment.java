@@ -20,8 +20,8 @@ import butterknife.ButterKnife;
 
 public class HomeFragment extends Fragment {
 
-    @BindView(R.id.floatingActionButton)
-    FloatingActionButton fab;
+//    @BindView(R.id.floatingActionButton)
+//    FloatingActionButton fab;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -33,24 +33,24 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-        ButterKnife.bind(this, view);
+        //ButterKnife.bind(this, view);
         return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onGoToDetails();
-            }
-        });
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                onGoToDetails();
+//            }
+//        });
     }
 
     private void onGoToDetails(){
         NavDirections action = HomeFragmentDirections.actionExperience();
-        Navigation.findNavController(fab).navigate(action);
+//        Navigation.findNavController(fab).navigate(action);
     }
 
 }
