@@ -47,7 +47,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CompanyHolder>{
     ViewGroup parent;
 
 
-    RVAdapter(List<Company> companies){
+    public RVAdapter(List<Company> companies){
         this.companies = companies;
     }
 
