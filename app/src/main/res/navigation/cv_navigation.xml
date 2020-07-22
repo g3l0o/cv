@@ -20,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/experienceFragment"
-        android:name="com.roger.cv.view.ExperienceFragment"
+        android:name="com.roger.cv.view.JobFragment"
         android:label="@string/experience_label"
-        tools:layout="@layout/fragment_experience" />
+        tools:layout="@layout/fragment_job" />
 </navigation>

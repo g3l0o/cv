@@ -13,7 +13,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.roger.cv.R;
 
 import butterknife.BindView;
@@ -27,7 +26,7 @@ public class HomeFragment extends Fragment {
     @BindView(R.id.card_academy)
     CardView mCardViewAcademy;
 
-    @BindView(R.id.card_course)
+    @BindView(R.id.card_courses)
     CardView mCardViewCourse;
 
     @BindView(R.id.card_certifications)
