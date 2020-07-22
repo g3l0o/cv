@@ -9,7 +9,7 @@ android {
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.roger.cv"
-        minSdkVersion 24
+        minSdkVersion 26
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -40,11 +40,8 @@ dependencies {
     implementation "androidx.navigation:navigation-ui:$navVersion"
     implementation "androidx.navigation:navigation-dynamic-features-fragment:$navVersion"
 
-
-
     implementation "com.jakewharton:butterknife:$butterknifeVersion"
     annotationProcessor "com.jakewharton:butterknife-compiler:$butterknifeVersion"
-
 
 }
 

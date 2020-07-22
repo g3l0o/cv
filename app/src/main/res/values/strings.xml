@@ -5,13 +5,19 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
-    <string name="home_label">Curriculum Vitae</string>
-    <string name="experience_label">Experiencia Laboral</string>
 
-    <string name="menu_academy">Educación</string>
-    <string name="menu_certifications">Certificaciones y Cursos</string>
-    <string name="menu_extracurricular">A. Extracurriculares</string>
-    <string name="menu_languages">Idiomas</string>
+    <string name="home_label">Curriculum Vitae</string>
+
+    <string name="experience_label">Experiencia Laboral</string>
+    <string name="academy_label">Educación</string>
+    <string name="courses_label">Cursos</string>
+    <string name="certifications_label">Certificaciones</string>
+    <string name="technical_label">Habilidades Técnicas</string>
+    <string name="extracurricular_label">Cocurriculares</string>
+    <string name="contests_label">Concursos</string>
+    <string name="books_label">Libros Leídos</string>
+    <string name="facts_label">Datos Curiosos</string>
+
     <string name="menu_communicate">Contacto</string>
     <string name="menu_send">Enviar CV</string>
     <string name="title_activity_information">Información</string>
