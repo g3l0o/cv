@@ -37,8 +37,10 @@
             android:layout_height="700dp"
             android:layout_below="@+id/header_cover_image"
             android:layout_marginTop="-30dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            app:cardBackgroundColor="@android:color/white"
             android:padding="5dp"
             app:cardCornerRadius="24dp">
 
@@ -53,6 +55,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_settings"
+                    android:layout_marginLeft="5dp"
                     android:background="@null" />
 
                 <TextView
@@ -66,15 +69,14 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    style="@style/subtitleText"
                     android:gravity="center"
-                    android:layout_marginTop="20dp"
-                    android:textSize="18sp"
-                    android:textColor="@color/colorSecondary_text"
+                    android:layout_marginTop="10dp"
                     android:text="correo@email.com" />
 
                 <GridLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_weight="1"
                     android:columnCount="3"
                     android:rowCount="3"
@@ -87,7 +89,7 @@
                         android:layout_height="0dp"
                         android:layout_rowWeight="1"
                         android:layout_columnWeight="1"
-                        android:layout_margin="16dp"
+                        android:layout_margin="10dp"
                         app:cardElevation="8dp">
 
                         <LinearLayout
@@ -104,7 +106,8 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="trabajo" />
+                                style="@style/homeItemsText"
+                                android:text="@string/experience_label" />
 
                         </LinearLayout>
 
@@ -114,7 +117,7 @@
                         android:layout_height="0dp"
                         android:layout_rowWeight="1"
                         android:layout_columnWeight="1"
-                        android:layout_margin="16dp"
+                        android:layout_margin="10dp"
                         app:cardElevation="8dp">
 
                         <LinearLayout
@@ -126,12 +129,13 @@
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:src="@drawable/ic_work" />
+                                android:src="@drawable/ic_academy" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="trabajo" />
+                                style="@style/homeItemsText"
+                                android:text="@string/academy_label" />
 
                         </LinearLayout>
 
@@ -141,7 +145,7 @@
                         android:layout_height="0dp"
                         android:layout_rowWeight="1"
                         android:layout_columnWeight="1"
-                        android:layout_margin="16dp"
+                        android:layout_margin="10dp"
                         app:cardElevation="8dp">
 
                         <LinearLayout
@@ -153,94 +157,13 @@
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:src="@drawable/ic_work" />
+                                android:src="@drawable/ic_course" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="trabajo" />
-
-                        </LinearLayout>
-
-                    </androidx.cardview.widget.CardView>
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:layout_rowWeight="1"
-                        android:layout_columnWeight="1"
-                        android:layout_margin="16dp"
-                        app:cardElevation="8dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/ic_work" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="trabajo" />
-
-                        </LinearLayout>
-
-                    </androidx.cardview.widget.CardView>
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:layout_rowWeight="1"
-                        android:layout_columnWeight="1"
-                        android:layout_margin="16dp"
-                        app:cardElevation="8dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/ic_work" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="trabajo" />
-
-                        </LinearLayout>
-
-                    </androidx.cardview.widget.CardView>
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:layout_rowWeight="1"
-                        android:layout_columnWeight="1"
-                        android:layout_margin="16dp"
-                        app:cardElevation="8dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/ic_work" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="trabajo" />
+                                style="@style/homeItemsText"
+                                android:text="@string/courses_label" />
 
                         </LinearLayout>
 
@@ -251,7 +174,7 @@
                         android:layout_height="0dp"
                         android:layout_rowWeight="1"
                         android:layout_columnWeight="1"
-                        android:layout_margin="16dp"
+                        android:layout_margin="10dp"
                         app:cardElevation="8dp">
 
                         <LinearLayout
@@ -263,12 +186,13 @@
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:src="@drawable/ic_work" />
+                                android:src="@drawable/ic_certifications" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="trabajo" />
+                                style="@style/homeItemsText"
+                                android:text="@string/certifications_label" />
 
                         </LinearLayout>
 
@@ -278,7 +202,7 @@
                         android:layout_height="0dp"
                         android:layout_rowWeight="1"
                         android:layout_columnWeight="1"
-                        android:layout_margin="16dp"
+                        android:layout_margin="10dp"
                         app:cardElevation="8dp">
 
                         <LinearLayout
@@ -290,12 +214,13 @@
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:src="@drawable/ic_work" />
+                                android:src="@drawable/ic_technical" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="trabajo" />
+                                android:text="@string/technical_label"
+                                android:textAlignment="center" />
 
                         </LinearLayout>
 
@@ -305,7 +230,7 @@
                         android:layout_height="0dp"
                         android:layout_rowWeight="1"
                         android:layout_columnWeight="1"
-                        android:layout_margin="16dp"
+                        android:layout_margin="10dp"
                         app:cardElevation="8dp">
 
                         <LinearLayout
@@ -317,12 +242,98 @@
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:src="@drawable/ic_work" />
+                                android:src="@drawable/ic_extracurricular" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="trabajo" />
+                                android:text="@string/extracurricular_label"
+                                android:textAlignment="center" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="10dp"
+                        app:cardElevation="8dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_contests" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/contests_label"
+                                android:textAlignment="center" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="10dp"
+                        app:cardElevation="8dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_books" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/books_label"
+                                android:textAlignment="center" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="10dp"
+                        app:cardElevation="8dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_fun_facts" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/facts_label"
+                                android:textAlignment="center" />
 
                         </LinearLayout>
 
