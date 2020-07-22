@@ -34,7 +34,7 @@ public class InformationActivity extends AppCompatActivity {
         TextViewName = (TextView) findViewById(R.id.user_profile_name);
         TextViewTitle = (TextView) findViewById(R.id.user_profile_title);
         TextViewAddress = (TextView) findViewById(R.id.information_address);
-        profileImage = (ImageButton) findViewById(R.id.user_profile_image);
+        profileImage = (ImageButton) findViewById(R.id.image_user_profile);
 
         information = getIntent().getExtras().getParcelable("information");
         imageBytes = getIntent().getExtras().getByteArray("imageBytes");
