@@ -17,10 +17,74 @@
             app:exitAnim="@android:anim/slide_out_right"
             app:popEnterAnim="@android:anim/slide_in_left"
             app:popExitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_homeFragment_to_academyFragment"
+            app:destination="@id/academyFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_coursesFragment"
+            app:destination="@id/coursesFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_certificationsFragment"
+            app:destination="@id/certificationsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_technicalFragment"
+            app:destination="@id/technicalFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_extracurricularFragment"
+            app:destination="@id/extracurricularFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_contestsFragment"
+            app:destination="@id/contestsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_booksFragment"
+            app:destination="@id/booksFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_factsFragment"
+            app:destination="@id/factsFragment" />
     </fragment>
     <fragment
         android:id="@+id/experienceFragment"
-        android:name="com.roger.cv.view.ExperienceFragment"
+        android:name="com.roger.cv.view.JobFragment"
         android:label="@string/experience_label"
-        tools:layout="@layout/fragment_experience" />
+        tools:layout="@layout/fragment_job" />
+    <fragment
+        android:id="@+id/academyFragment"
+        android:name="com.roger.cv.view.AcademyFragment"
+        android:label="@string/academy_label"
+        tools:layout="@layout/fragment_academy" />
+    <fragment
+        android:id="@+id/coursesFragment"
+        android:name="com.roger.cv.view.CoursesFragment"
+        android:label="@string/courses_label"
+        tools:layout="@layout/fragment_courses" />
+    <fragment
+        android:id="@+id/certificationsFragment"
+        android:name="com.roger.cv.view.CertificationsFragment"
+        android:label="@string/certifications_label"
+        tools:layout="@layout/fragment_certifications" />
+    <fragment
+        android:id="@+id/technicalFragment"
+        android:name="com.roger.cv.view.TechnicalFragment"
+        android:label="@string/technical_label"
+        tools:layout="@layout/fragment_technical" />
+    <fragment
+        android:id="@+id/extracurricularFragment"
+        android:name="com.roger.cv.view.ExtracurricularFragment"
+        android:label="@string/extracurricular_label"
+        tools:layout="@layout/fragment_extracurricular" />
+    <fragment
+        android:id="@+id/contestsFragment"
+        android:name="com.roger.cv.view.ContestsFragment"
+        android:label="@string/contests_label"
+        tools:layout="@layout/fragment_contests" />
+    <fragment
+        android:id="@+id/booksFragment"
+        android:name="com.roger.cv.view.BooksFragment"
+        android:label="@string/books_label"
+        tools:layout="@layout/fragment_books" />
+    <fragment
+        android:id="@+id/factsFragment"
+        android:name="com.roger.cv.view.FactsFragment"
+        android:label="@string/facts_label"
+        tools:layout="@layout/fragment_facts" />
 </navigation>
