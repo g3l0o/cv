@@ -13,10 +13,10 @@
         <action
             android:id="@+id/actionExperience"
             app:destination="@id/experienceFragment"
-            app:enterAnim="@android:anim/slide_in_left"
-            app:exitAnim="@android:anim/slide_out_right"
-            app:popEnterAnim="@android:anim/slide_in_left"
-            app:popExitAnim="@android:anim/slide_out_right" />
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_enter_anim"
+            app:popExitAnim="@anim/nav_default_exit_anim" />
         <action
             android:id="@+id/action_homeFragment_to_academyFragment"
             app:destination="@id/academyFragment" />
@@ -44,9 +44,9 @@
     </fragment>
     <fragment
         android:id="@+id/experienceFragment"
-        android:name="com.roger.cv.view.JobFragment"
+        android:name="com.roger.cv.view.job.JobListFragment"
         android:label="@string/experience_label"
-        tools:layout="@layout/fragment_job" />
+        tools:layout="@layout/fragment_job_list" />
     <fragment
         android:id="@+id/academyFragment"
         android:name="com.roger.cv.view.AcademyFragment"

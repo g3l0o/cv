@@ -10,6 +10,8 @@ import androidx.appcompat.widget.Toolbar;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.roger.cv.model.Information;
+
 import java.io.ByteArrayInputStream;
 
 public class InformationActivity extends AppCompatActivity {
