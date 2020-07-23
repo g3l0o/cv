@@ -1,4 +1,4 @@
-package com.roger.cv;
+package com.roger.cv.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -15,6 +15,7 @@ public class Information implements Parcelable {
     private final String mail;
     private final String name;
     private final String title;
+    private int uuid;
 
 
     public Information(){

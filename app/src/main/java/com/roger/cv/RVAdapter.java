@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.roger.cv.model.Company;
 
 import java.io.ByteArrayInputStream;
 import java.util.List;
@@ -36,9 +37,9 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CompanyHolder>{
         CompanyHolder(View itemView){
             super(itemView);
             cv = (CardView) itemView.findViewById(R.id.company_card_view);
-            companyLogo = (ImageButton) itemView.findViewById(R.id.card_view_company_logo);
-            companyName = (TextView) itemView.findViewById(R.id.card_view_company_name);
-            companyDescription = (TextView) itemView.findViewById(R.id.card_view_company_description);
+            companyLogo = (ImageButton) itemView.findViewById(R.id.imagebutton_company_logo);
+            companyName = (TextView) itemView.findViewById(R.id.text_company_name);
+            companyDescription = (TextView) itemView.findViewById(R.id.text_position);
         }
     }
 

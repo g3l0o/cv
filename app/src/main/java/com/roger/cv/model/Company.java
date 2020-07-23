@@ -1,4 +1,4 @@
-package com.roger.cv;
+package com.roger.cv.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -14,7 +14,17 @@ public class Company implements Parcelable {
     private String logo;
     private String name;
     private String startDate;
+    private String uuid;
 
+
+    public Company(String current, String description, String endDate, String logo, String name, String startDate) {
+        this.current = current;
+        this.description = description;
+        this.endDate = endDate;
+        this.logo = logo;
+        this.name = name;
+        this.startDate = startDate;
+    }
 
     public void setName(String name) {
         this.name = name;
