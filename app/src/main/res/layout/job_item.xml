@@ -79,7 +79,8 @@
         android:padding="5dp"
         android:maxLines="3"
         android:ellipsize="end"
-        tools:text="@tools:sample/lorem/random" />
+        tools:text="@tools:sample/lorem/random"
+        android:visibility="gone"/>
     
 </LinearLayout>
     

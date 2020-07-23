@@ -1,4 +1,4 @@
-package com.roger.cv.view;
+package com.roger.cv.view.job;
 
 import android.os.Bundle;
 
@@ -11,10 +11,10 @@ import android.view.ViewGroup;
 import com.roger.cv.R;
 
 
-public class JobFragment extends Fragment {
+public class JobListFragment extends Fragment {
 
 
-    public JobFragment() {
+    public JobListFragment() {
         // Required empty public constructor
     }
 
@@ -23,6 +23,6 @@ public class JobFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_job, container, false);
+        return inflater.inflate(R.layout.fragment_job_list, container, false);
     }
 }

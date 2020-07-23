@@ -16,7 +16,7 @@ import android.widget.TextView;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.roger.cv.model.Company;
+import com.roger.cv.model.Job;
 
 import java.io.ByteArrayInputStream;
 import java.util.List;
@@ -44,11 +44,11 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CompanyHolder>{
     }
 
     final long ONE_MEGABYTE = 1024 * 1024;
-    List<Company> companies;
+    List<Job> companies;
     ViewGroup parent;
 
 
-    public RVAdapter(List<Company> companies){
+    public RVAdapter(List<Job> companies){
         this.companies = companies;
     }
 
@@ -61,20 +61,20 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CompanyHolder>{
     @Override
     public CompanyHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         this.parent = parent;
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.company_item, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.job_item, parent, false);
         CompanyHolder ch = new CompanyHolder(v);
         return ch;
     }
 
     @Override
     public void onBindViewHolder(final CompanyHolder holder, int position) {
-        Company company = companies.get(position);
-        holder.companyName.setText(company.getName());
-        holder.companyDescription.setText(company.getDescription());
+        Job job = companies.get(position);
+        holder.companyName.setText(job.getName());
+        holder.companyDescription.setText(job.getDescription());
 
-        if(!company.getLogo().isEmpty()){
+        if(!job.getLogo().isEmpty()){
             FirebaseStorage storage = FirebaseStorage.getInstance();
-            StorageReference storageRef = storage.getReferenceFromUrl("gs://roger-cv.appspot.com").child(company.getLogo());
+            StorageReference storageRef = storage.getReferenceFromUrl("gs://roger-cv.appspot.com").child(job.getLogo());
             storageRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
                 @Override
                 public void onSuccess(byte[] bytes) {
