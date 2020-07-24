@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.roger.cv.R;
 import com.roger.cv.model.Job;
+import com.roger.cv.util.Util;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +46,8 @@ public class JobListAdapter extends RecyclerView.Adapter<JobListAdapter.JobViewH
 
         mTextName.setText(jobsList.get(position).getName());
         mTextPosition.setText(jobsList.get(position).getJobPosition());
+
+        Util.loadImage(mImageButtonLogo, jobsList.get(position).getLogo(), Util.getCircularProgressDrawable(mImageButtonLogo.getContext()));
     }
 
     @Override

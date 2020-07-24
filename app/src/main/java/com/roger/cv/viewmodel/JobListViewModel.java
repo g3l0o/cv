@@ -23,17 +23,15 @@ public class JobListViewModel extends AndroidViewModel {
     public MutableLiveData<List<Job>> jobs = new MutableLiveData<List<Job>>();
     public MutableLiveData<Boolean> isError = new MutableLiveData<Boolean>();
     public MutableLiveData<Boolean> isLoading = new MutableLiveData<Boolean>();
-    
+
     private String USER_NAME = "CV_APP";
     private String REFERENCE = "User/Rogelio";
-    private String STORAGE = "gs://roger-cv.appspot.com";
 
     private  String EXPERIENCE_KEY = "experience";
 
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mCVDatabaseReference;
-    private FirebaseStorage mFirebaseStorage;
-    private StorageReference mStorageReference;
+
 
     public JobListViewModel(@NonNull Application application) {
         super(application);
@@ -41,8 +39,6 @@ public class JobListViewModel extends AndroidViewModel {
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mCVDatabaseReference = mFirebaseDatabase.getReference(REFERENCE);
 
-        mFirebaseStorage = FirebaseStorage.getInstance();
-        mStorageReference = mFirebaseStorage.getReferenceFromUrl(STORAGE);
     }
 
     public void refresh(){
@@ -70,6 +66,7 @@ public class JobListViewModel extends AndroidViewModel {
                 isError.setValue(true);
                 isLoading.setValue(false);
             }
+
         });
     }
 
