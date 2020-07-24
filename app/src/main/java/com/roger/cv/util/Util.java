@@ -6,6 +6,7 @@ import android.widget.ImageView;
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.annotation.GlideModule;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -15,7 +16,7 @@ public class Util {
     private static StorageReference getFirebaseImageLocation(String imageUrl){
         String STORAGE = "gs://roger-cv.appspot.com";
         FirebaseStorage mFirebaseStorage = FirebaseStorage.getInstance();
-         return mFirebaseStorage.getReferenceFromUrl(STORAGE).child(imageUrl);
+         return mFirebaseStorage.getReference().child(imageUrl);
     }
 
     public static void loadImage(ImageView imageView, String imageName, CircularProgressDrawable circularProgressDrawable){
@@ -23,7 +24,7 @@ public class Util {
         RequestOptions options = new RequestOptions()
                 .placeholder(circularProgressDrawable);
 
-        Glide.with(imageView.getContext())
+        GlideApp.with(imageView.getContext())
                 .setDefaultRequestOptions(options)
                 .load(getFirebaseImageLocation(imageName))
                 .into(imageView);
