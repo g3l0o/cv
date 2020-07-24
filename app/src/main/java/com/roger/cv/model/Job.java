@@ -18,6 +18,9 @@ public class Job {
     private String jobPosition;
     private String uuid;
 
+    public Job() {
+    }
+
     public Job(String current, String description, String endDate, String logo, String name, String startDate, String jobPosition) {
         this.current = current;
         this.description = description;
