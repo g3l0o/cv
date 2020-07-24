@@ -3,20 +3,33 @@ package com.roger.cv.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 /**
  * Created by roger on 20/03/17.
  */
 
+@Entity
 public class Job {
 
+    @ColumnInfo
     private String current;
+    @ColumnInfo
     private String description;
+    @ColumnInfo
     private String endDate;
+    @ColumnInfo
     private String logo;
+    @ColumnInfo
     private String name;
+    @ColumnInfo
     private String startDate;
+    @ColumnInfo
     private String jobPosition;
-    private String uuid;
+    @PrimaryKey(autoGenerate = true)
+    private long uuid;
 
     public Job() {
     }
@@ -31,6 +44,54 @@ public class Job {
         this.jobPosition = jobPosition;
     }
 
+    public String getCurrent() {
+        return current;
+    }
+
+    public void setCurrent(String current) {
+        this.current = current;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
+    }
+
+    public String getLogo() {
+        return logo;
+    }
+
+    public void setLogo(String logo) {
+        this.logo = logo;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
+
     public String getJobPosition() {
         return jobPosition;
     }
@@ -39,33 +100,11 @@ public class Job {
         this.jobPosition = jobPosition;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public long getUuid() {
+        return uuid;
     }
 
-    public String getCurrent() {
-        return current;
+    public void setUuid(long uuid) {
+        this.uuid = uuid;
     }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public String getEndDate() {
-        return endDate;
-    }
-
-    public String getLogo() {
-        return logo;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getStartDate() {
-        return startDate;
-    }
-
-
 }

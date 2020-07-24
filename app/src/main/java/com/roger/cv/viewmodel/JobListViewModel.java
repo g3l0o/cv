@@ -1,6 +1,8 @@
 package com.roger.cv.viewmodel;
 
 import android.app.Application;
+import android.os.AsyncTask;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -14,6 +16,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.roger.cv.model.Job;
+import com.roger.cv.model.JobDao;
+import com.roger.cv.model.JobDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +36,8 @@ public class JobListViewModel extends AndroidViewModel {
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mCVDatabaseReference;
 
+    private AsyncTask<List<Job>, Void, List<Job>> insertTask;
+    private AsyncTask<Void, Void, List<Job>> retrieveTask;
 
     public JobListViewModel(@NonNull Application application) {
         super(application);
@@ -41,8 +47,29 @@ public class JobListViewModel extends AndroidViewModel {
 
     }
 
+    @Override
+    protected void onCleared() {
+        super.onCleared();
+
+        if(insertTask != null){
+            insertTask.cancel(true);
+            insertTask = null;
+        }
+
+        if(retrieveTask != null){
+            retrieveTask.cancel(true);
+            retrieveTask = null;
+        }
+    }
+
     public void refresh(){
-        fetchFromRemote();
+        fetchFromDatabase();
+        //fetchFromRemote();
+    }
+
+    private void fetchFromDatabase(){
+        retrieveTask = new RetrieveJobsTask();
+        retrieveTask.execute();
     }
 
     private void fetchFromRemote(){
@@ -55,10 +82,10 @@ public class JobListViewModel extends AndroidViewModel {
                     Job job = ds.getValue(Job.class);
                     jobsList.add(job);
                 }
+                insertTask = new InsertJobsTask();
+                insertTask.execute(jobsList);
 
-                jobs.setValue(jobsList);
-                isError.setValue(false);
-                isLoading.setValue(false);
+                Toast.makeText(getApplication(), "Data Retrieved from Firebase", Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -68,6 +95,51 @@ public class JobListViewModel extends AndroidViewModel {
             }
 
         });
+    }
+
+    private void jobsRetrieved(List<Job> jobsList) {
+        jobs.setValue(jobsList);
+        isError.setValue(false);
+        isLoading.setValue(false);
+    }
+
+    private class InsertJobsTask extends AsyncTask<List<Job>, Void, List<Job>>{
+        @Override
+        protected List<Job> doInBackground(List<Job>... lists) {
+            List<Job> list = lists[0];
+            JobDao dao = JobDatabase.getInstance(getApplication()).jobDao();
+
+            //clean the database
+            dao.deleteAllJobs();
+
+            ArrayList<Job> newList = new ArrayList<>(list);
+            List<Long> result = dao.insertAll(newList.toArray(new Job[0]));
+
+            for (int i = 0; i < list.size(); i++){
+                list.get(i).setUuid(result.get(i));
+            }
+
+            return list;
+        }
+
+        @Override
+        protected void onPostExecute(List<Job> jobs) {
+            jobsRetrieved(jobs);
+        }
+    }
+
+    private class RetrieveJobsTask extends AsyncTask<Void, Void, List<Job>>{
+
+        @Override
+        protected List<Job> doInBackground(Void... voids) {
+            return JobDatabase.getInstance(getApplication()).jobDao().getAllJobs();
+        }
+
+        @Override
+        protected void onPostExecute(List<Job> jobs) {
+            jobsRetrieved(jobs);
+            Toast.makeText(getApplication(), "Data Retrieved from Room", Toast.LENGTH_SHORT).show();
+        }
     }
 
 }
