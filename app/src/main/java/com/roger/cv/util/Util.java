@@ -5,21 +5,15 @@ import android.widget.ImageView;
 
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.annotation.GlideModule;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 public class Util {
 
-    private static StorageReference getFirebaseImageLocation(String imageUrl){
-        String STORAGE = "gs://roger-cv.appspot.com";
-        FirebaseStorage mFirebaseStorage = FirebaseStorage.getInstance();
-         return mFirebaseStorage.getReference().child(imageUrl);
-    }
+    public static void loadImage(ImageView imageView, String imageName){
 
-    public static void loadImage(ImageView imageView, String imageName, CircularProgressDrawable circularProgressDrawable){
+        CircularProgressDrawable circularProgressDrawable = getCircularProgressDrawable(imageView.getContext());
 
         RequestOptions options = new RequestOptions()
                 .placeholder(circularProgressDrawable);
@@ -30,7 +24,13 @@ public class Util {
                 .into(imageView);
     }
 
-    public static CircularProgressDrawable getCircularProgressDrawable(Context context){
+    private static StorageReference getFirebaseImageLocation(String imageUrl){
+        String storage = "gs://roger-cv.appspot.com";
+        FirebaseStorage mFirebaseStorage = FirebaseStorage.getInstance();
+        return mFirebaseStorage.getReferenceFromUrl(storage).child(imageUrl);
+    }
+
+    private static CircularProgressDrawable getCircularProgressDrawable(Context context){
         CircularProgressDrawable cpd = new CircularProgressDrawable(context);
         cpd.setStrokeWidth(10f);
         cpd.setCenterRadius(50f);

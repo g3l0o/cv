@@ -47,7 +47,7 @@ public class JobListAdapter extends RecyclerView.Adapter<JobListAdapter.JobViewH
         mTextName.setText(jobsList.get(position).getName());
         mTextPosition.setText(jobsList.get(position).getJobPosition());
 
-        Util.loadImage(mImageButtonLogo, jobsList.get(position).getLogo(), Util.getCircularProgressDrawable(mImageButtonLogo.getContext()));
+        Util.loadImage(mImageButtonLogo, jobsList.get(position).getLogo());
     }
 
     @Override
