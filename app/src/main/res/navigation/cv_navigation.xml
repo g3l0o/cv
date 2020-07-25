@@ -95,5 +95,10 @@
         android:id="@+id/jobDetailFragment"
         android:name="com.roger.cv.view.job.JobDetailFragment"
         android:label="fragment_job_detail"
-        tools:layout="@layout/fragment_job_detail" />
+        tools:layout="@layout/fragment_job_detail" >
+        <argument
+            android:name="jobUuid"
+            android:defaultValue="0L"
+            app:argType="long" />
+    </fragment>
 </navigation>

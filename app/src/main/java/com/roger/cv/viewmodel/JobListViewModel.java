@@ -154,7 +154,6 @@ public class JobListViewModel extends AndroidViewModel {
         @Override
         protected void onPostExecute(List<Job> jobs) {
             jobsRetrieved(jobs);
-            Toast.makeText(getApplication(), "Data Retrieved from Room", Toast.LENGTH_SHORT).show();
         }
     }
 

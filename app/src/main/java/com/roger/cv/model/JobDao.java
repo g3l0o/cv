@@ -15,7 +15,7 @@ public interface JobDao {
     List<Job> getAllJobs();
 
     @Query("SELECT * FROM job WHERE uuid = :jobId")
-    Job getJob(int jobId);
+    Job getJob(long jobId);
 
     @Query("DELETE FROM job")
     void deleteAllJobs();
