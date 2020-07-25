@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,6 +42,9 @@ public class JobListFragment extends Fragment {
     @BindView(R.id.progress_loading)
     ProgressBar mProgressBarLoading;
 
+    @BindView(R.id.swiperefresh_jobs)
+    SwipeRefreshLayout mSwipeRefreshJobs;
+
     public JobListFragment() {
         // Required empty public constructor
     }
@@ -54,7 +58,7 @@ public class JobListFragment extends Fragment {
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         viewModel = ViewModelProviders.of(this).get(JobListViewModel.class);
@@ -62,6 +66,17 @@ public class JobListFragment extends Fragment {
 
         mRecyclerViewJobs.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecyclerViewJobs.setAdapter(jobListAdapter);
+
+        mSwipeRefreshJobs.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                mRecyclerViewJobs.setVisibility(View.GONE);
+                mTextViewError.setVisibility(View.GONE);
+                mProgressBarLoading.setVisibility(View.VISIBLE);
+                viewModel.refreshBypassCache();
+                mSwipeRefreshJobs.setRefreshing(false);
+            }
+        });
 
         observeViewModel();
     }

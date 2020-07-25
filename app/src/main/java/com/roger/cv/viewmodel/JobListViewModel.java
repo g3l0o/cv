@@ -18,6 +18,7 @@ import com.google.firebase.storage.StorageReference;
 import com.roger.cv.model.Job;
 import com.roger.cv.model.JobDao;
 import com.roger.cv.model.JobDatabase;
+import com.roger.cv.util.SharedPreferenceHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +39,9 @@ public class JobListViewModel extends AndroidViewModel {
 
     private AsyncTask<List<Job>, Void, List<Job>> insertTask;
     private AsyncTask<Void, Void, List<Job>> retrieveTask;
+
+    private SharedPreferenceHelper preferenceHelper = SharedPreferenceHelper.getInstance(getApplication());
+    private long refreshTime = 5 * 60 * 1_000 * 1_000 * 1_000L; //5 minutes in nanoseconds
 
     public JobListViewModel(@NonNull Application application) {
         super(application);
@@ -63,8 +67,19 @@ public class JobListViewModel extends AndroidViewModel {
     }
 
     public void refresh(){
-        fetchFromDatabase();
-        //fetchFromRemote();
+
+        long updateTime = preferenceHelper.getUpdateTime();
+        long currentTime = System.nanoTime();
+
+        if(updateTime != 0 && currentTime - updateTime < refreshTime) {
+            fetchFromDatabase();
+        }else {
+            fetchFromRemote();
+        }
+    }
+
+    public void refreshBypassCache(){
+        fetchFromRemote();
     }
 
     private void fetchFromDatabase(){
@@ -125,6 +140,7 @@ public class JobListViewModel extends AndroidViewModel {
         @Override
         protected void onPostExecute(List<Job> jobs) {
             jobsRetrieved(jobs);
+            preferenceHelper.saveUpdateTime(System.nanoTime());
         }
     }
 
