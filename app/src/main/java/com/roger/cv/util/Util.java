@@ -3,6 +3,7 @@ package com.roger.cv.util;
 import android.content.Context;
 import android.widget.ImageView;
 
+import androidx.databinding.BindingAdapter;
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable;
 
 import com.bumptech.glide.request.RequestOptions;
@@ -11,6 +12,7 @@ import com.google.firebase.storage.StorageReference;
 
 public class Util {
 
+    @BindingAdapter("android:imageUrl")
     public static void loadImage(ImageView imageView, String imageName){
 
         CircularProgressDrawable circularProgressDrawable = getCircularProgressDrawable(imageView.getContext());

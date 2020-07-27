@@ -15,19 +15,19 @@ import androidx.room.PrimaryKey;
 public class Job {
 
     @ColumnInfo
-    private String current;
+    public String current;
     @ColumnInfo
-    private String description;
+    public String description;
     @ColumnInfo
-    private String endDate;
+    public String endDate;
     @ColumnInfo
-    private String logo;
+    public String logo;
     @ColumnInfo
-    private String name;
+    public String name;
     @ColumnInfo
-    private String startDate;
+    public String startDate;
     @ColumnInfo
-    private String jobPosition;
+    public String jobPosition;
     @PrimaryKey(autoGenerate = true)
     private long uuid;
 
