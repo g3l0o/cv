@@ -149,7 +149,6 @@
                                     android:src="@drawable/ic_work" />
 
                                 <TextView
-                                    android:id="@+id/text_job_label"
                                     style="@style/homeItemsText"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
@@ -276,6 +275,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    style="@style/homeItemsText"
                                     android:text="@string/technical_label"
                                     android:textAlignment="center" />
 
@@ -307,6 +307,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    style="@style/homeItemsText"
                                     android:text="@string/extracurricular_label"
                                     android:textAlignment="center" />
 
@@ -338,6 +339,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    style="@style/homeItemsText"
                                     android:text="@string/contests_label"
                                     android:textAlignment="center" />
 
@@ -369,6 +371,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    style="@style/homeItemsText"
                                     android:text="@string/books_label"
                                     android:textAlignment="center" />
 
@@ -400,6 +403,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    style="@style/homeItemsText"
                                     android:text="@string/facts_label"
                                     android:textAlignment="center" />
 
