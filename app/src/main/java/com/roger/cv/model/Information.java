@@ -1,31 +1,35 @@
 package com.roger.cv.model;
 
-import android.os.Parcel;
-import android.os.Parcelable;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 /**
  * Created by roger on 12/03/17.
  */
+@Entity
+public class Information{
 
-public class Information implements Parcelable {
-    private final String address;
-    private final String birthday;
-    private final String cellphone;
-    private final String imageURL;
-    private final String mail;
-    private final String name;
-    private final String title;
-    private int uuid;
+    @ColumnInfo
+    public String address;
+    @ColumnInfo
+    public String birthday;
+    @ColumnInfo
+    public String cellphone;
+    @ColumnInfo
+    public String imageURL;
+    @ColumnInfo
+    public String mail;
+    @ColumnInfo
+    public String name;
+    @ColumnInfo
+    public String title;
+
+    @PrimaryKey(autoGenerate = true)
+    public long uuid;
 
 
     public Information(){
-        this.address = "";
-        this.birthday = "";
-        this.cellphone = "";
-        this.imageURL = "";
-        this.mail = "";
-        this.name = "";
-        this.title = "";
     }
 
     public Information(String address, String birthday, String cellphone, String imageURL, String mail, String name, String title){
@@ -42,61 +46,63 @@ public class Information implements Parcelable {
         return address;
     }
 
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public String getBirthday() {
         return birthday;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
     }
 
     public String getCellphone() {
         return cellphone;
     }
 
+    public void setCellphone(String cellphone) {
+        this.cellphone = cellphone;
+    }
+
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
+    }
+
     public String getMail() {
         return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 
     public String getName() {
         return name;
     }
 
-    public String getImageURL(){ return imageURL;}
-
-    public String getTitle(){ return title;}
-
-    @Override
-    public int describeContents() {
-        return 0;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(this.address);
-        dest.writeString(this.birthday);
-        dest.writeString(this.cellphone);
-        dest.writeString(this.imageURL);
-        dest.writeString(this.mail);
-        dest.writeString(this.name);
-        dest.writeString(this.title);
+    public String getTitle() {
+        return title;
     }
 
-    protected Information(Parcel in) {
-        this.address = in.readString();
-        this.birthday = in.readString();
-        this.cellphone = in.readString();
-        this.imageURL = in.readString();
-        this.mail = in.readString();
-        this.name = in.readString();
-        this.title = in.readString();
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public static final Parcelable.Creator<Information> CREATOR = new Parcelable.Creator<Information>() {
-        @Override
-        public Information createFromParcel(Parcel source) {
-            return new Information(source);
-        }
+    public long getUuid() {
+        return uuid;
+    }
 
-        @Override
-        public Information[] newArray(int size) {
-            return new Information[size];
-        }
-    };
+    public void setUuid(long uuid) {
+        this.uuid = uuid;
+    }
 }
