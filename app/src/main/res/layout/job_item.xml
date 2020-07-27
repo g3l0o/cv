@@ -1,86 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="20dp"
-    android:orientation="vertical">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/company_card_view"
-        android:layout_gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="100dp">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="5dp">
-
-            <ImageButton
-                android:id="@+id/imagebutton_company_logo"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:scaleType="centerCrop"
-                android:layout_margin="10dp"
-                tools:src="@drawable/ic_work"
-                android:layout_alignParentStart="true"
-                android:background="@null"
-                android:layout_centerVertical="true"/>
-
-            <ImageButton
-                android:id="@+id/imagebutton_view_more"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/ic_more"
-                android:background="@null"
-                android:scaleType="fitXY"
-                android:layout_centerVertical="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="5dp"/>
-
-            <TextView
-                android:id="@+id/text_company_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="Company"
-                android:padding="5dp"
-                android:layout_toEndOf="@+id/imagebutton_company_logo"
-                android:layout_toStartOf="@id/imagebutton_view_more"
-                android:textSize="20sp"
-                android:textColor="@color/colorPrimary_text" />
-
-            <TextView
-                android:id="@+id/text_position"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="Position"
-                android:padding="5dp"
-                android:paddingTop="2dp"
-                android:layout_toEndOf="@+id/imagebutton_company_logo"
-                android:layout_toStartOf="@id/imagebutton_view_more"
-                android:layout_below="@+id/text_company_name"
-                android:textSize="15sp"
-                android:textColor="@color/colorSecondary_text"
-                android:singleLine="false"/>
-
-        </RelativeLayout>
-
-    </androidx.cardview.widget.CardView>
+    <data>
+        <variable
+            name="job"
+            type="com.roger.cv.model.Job" />
+        <variable
+            name="clickListener"
+            type="com.roger.cv.view.JobClickListener" />
+    </data>
     
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/divider"
-        android:textColor="@color/colorSecondary_text"
-        android:textSize="15sp"
-        android:padding="5dp"
-        android:maxLines="3"
-        android:ellipsize="end"
-        tools:text="@tools:sample/lorem/random"
-        android:visibility="gone"/>
-    
-</LinearLayout>
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_company"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:onClick="@{clickListener::onJobClicked}">
+
+            <TextView
+                android:id="@+id/text_jobId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:text="@{String.valueOf(job.uuid)}"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="5dp">
+
+                <ImageButton
+                    android:id="@+id/imagebutton_company_logo"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="10dp"
+                    android:background="@null"
+                    android:scaleType="centerCrop"
+                    android:imageUrl="@{job.logo}"
+                    tools:src="@drawable/ic_work" />
+
+                <ImageButton
+                    android:id="@+id/imagebutton_view_more"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="5dp"
+                    android:background="@null"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_more" />
+
+                <TextView
+                    android:id="@+id/text_company_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toStartOf="@id/imagebutton_view_more"
+                    android:layout_toEndOf="@+id/imagebutton_company_logo"
+                    android:padding="5dp"
+                    android:textColor="@color/colorPrimary_text"
+                    android:textSize="20sp"
+                    android:text="@{job.name}"
+                    tools:text="Empresa"/>
+
+                <TextView
+                    android:id="@+id/text_position"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/text_company_name"
+                    android:layout_toStartOf="@id/imagebutton_view_more"
+                    android:layout_toEndOf="@+id/imagebutton_company_logo"
+                    android:padding="5dp"
+                    android:paddingTop="2dp"
+                    android:singleLine="false"
+                    android:textColor="@color/colorSecondary_text"
+                    android:textSize="15sp"
+                    android:text="@{job.jobPosition}"
+                    tools:text="Position" />
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/divider"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:padding="5dp"
+            android:textColor="@color/colorSecondary_text"
+            android:textSize="15sp"
+            android:visibility="gone"
+            tools:text="@tools:sample/lorem/random" />
+
+    </LinearLayout>
+</layout>
     
