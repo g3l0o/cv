@@ -12,6 +12,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.roger.cv.model.Information;
+import com.roger.cv.util.SharedPreferenceHelper;
 
 public class HomeViewModel extends AndroidViewModel {
 
@@ -27,6 +28,9 @@ public class HomeViewModel extends AndroidViewModel {
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mCVDatabaseReference;
 
+    private SharedPreferenceHelper preferenceHelper = SharedPreferenceHelper.getInstance(getApplication());
+    private long refreshTime = 60 * 60 * 1_000 * 1_000 * 1_000L; //60 minutes in nanoseconds
+
     public HomeViewModel(@NonNull Application application) {
         super(application);
 
@@ -36,10 +40,17 @@ public class HomeViewModel extends AndroidViewModel {
     }
 
     public void fetchData(){
-        fetchFromDatabase();
+        long updateTime = preferenceHelper.getUpdateTime();
+        long currentTime = System.nanoTime();
+
+        if(updateTime != 0 && currentTime - updateTime < refreshTime) {
+            fetchFromLocalDatabase();
+        }else {
+            fetchFromFirebase();
+        }
     }
 
-    private void fetchFromDatabase(){
+    private void fetchFromFirebase(){
         isLoading.setValue(true);
 
         mCVDatabaseReference.child(INFORMATION_KEY).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -55,5 +66,9 @@ public class HomeViewModel extends AndroidViewModel {
                 isError.setValue(true);
             }
         });
+    }
+
+    private void fetchFromLocalDatabase(){
+
     }
 }
