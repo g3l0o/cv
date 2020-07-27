@@ -2,6 +2,9 @@
 <layout>
     <data>
         <variable
+            name="information"
+            type="com.roger.cv.model.Information" />
+        <variable
             name="clickListener"
             type="com.roger.cv.view.home.HomeClickListener" />
     </data>
@@ -37,7 +40,26 @@
                 android:padding="3dp"
                 android:scaleType="centerCrop" />
 
+            <ProgressBar
+                android:id="@+id/progress_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/image_header_cover"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="150dp"/>
+
+            <TextView
+                android:id="@+id/text_error_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/image_header_cover"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="150dp"
+                android:text="@string/error_message"
+                android:visibility="gone"/>
+
             <androidx.cardview.widget.CardView
+                android:id="@+id/card_home_menu"
                 android:layout_width="match_parent"
                 android:layout_height="700dp"
                 android:layout_below="@+id/image_header_cover"
@@ -47,7 +69,8 @@
                 android:layout_marginBottom="10dp"
                 android:padding="5dp"
                 app:cardBackgroundColor="@android:color/white"
-                app:cardCornerRadius="24dp">
+                app:cardCornerRadius="24dp"
+                android:visibility="gone">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -71,7 +94,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
                         android:gravity="center"
-                        android:text="Nombre" />
+                        android:text="@{information.name}"
+                        tools:text="Nombre" />
 
                     <TextView
                         android:id="@+id/text_mail"
@@ -80,7 +104,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:gravity="center"
-                        android:text="correo@email.com" />
+                        android:text="@{information.mail}"
+                        tools:text="correo@email.com" />
 
                     <GridLayout
                         android:layout_width="match_parent"

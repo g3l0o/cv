@@ -7,7 +7,7 @@ import android.os.Parcelable;
  * Created by roger on 12/03/17.
  */
 
-public class Information implements Parcelable {
+public class Information{
     private final String address;
     private final String birthday;
     private final String cellphone;
@@ -62,41 +62,5 @@ public class Information implements Parcelable {
 
     public String getTitle(){ return title;}
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(this.address);
-        dest.writeString(this.birthday);
-        dest.writeString(this.cellphone);
-        dest.writeString(this.imageURL);
-        dest.writeString(this.mail);
-        dest.writeString(this.name);
-        dest.writeString(this.title);
-    }
-
-    protected Information(Parcel in) {
-        this.address = in.readString();
-        this.birthday = in.readString();
-        this.cellphone = in.readString();
-        this.imageURL = in.readString();
-        this.mail = in.readString();
-        this.name = in.readString();
-        this.title = in.readString();
-    }
-
-    public static final Parcelable.Creator<Information> CREATOR = new Parcelable.Creator<Information>() {
-        @Override
-        public Information createFromParcel(Parcel source) {
-            return new Information(source);
-        }
-
-        @Override
-        public Information[] newArray(int size) {
-            return new Information[size];
-        }
-    };
 }
