@@ -6,8 +6,11 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.roger.cv.model.Information;
 
 public class HomeViewModel extends AndroidViewModel {
@@ -39,9 +42,18 @@ public class HomeViewModel extends AndroidViewModel {
     private void fetchFromDatabase(){
         isLoading.setValue(true);
 
-        Information info = new Information("dirección", "cumpleaños", "celular", "imagen", "mail@correo.com", "Roger Rivera", "Ingeniero");
-        information.setValue(info);
+        mCVDatabaseReference.child(INFORMATION_KEY).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Information info = snapshot.getValue(Information.class);
+                information.setValue(info);
+            }
 
-        isLoading.setValue(false);
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                isLoading.setValue(false);
+                isError.setValue(true);
+            }
+        });
     }
 }

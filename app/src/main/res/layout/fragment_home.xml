@@ -38,7 +38,9 @@
                 android:layout_marginTop="-105dp"
                 android:elevation="4dp"
                 android:padding="3dp"
-                android:scaleType="centerCrop" />
+                android:scaleType="centerCrop"
+                android:background="@null"
+                android:circularImageUrl="@{information.imageURL}"/>
 
             <ProgressBar
                 android:id="@+id/progress_home"
@@ -46,7 +48,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/image_header_cover"
                 android:layout_centerInParent="true"
-                android:layout_marginTop="150dp"/>
+                android:layout_marginTop="150dp"
+                tools:visibility="gone"/>
 
             <TextView
                 android:id="@+id/text_error_home"
@@ -56,7 +59,7 @@
                 android:layout_centerInParent="true"
                 android:layout_marginTop="150dp"
                 android:text="@string/error_message"
-                android:visibility="gone"/>
+                android:visibility="gone" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/card_home_menu"
@@ -70,7 +73,8 @@
                 android:padding="5dp"
                 app:cardBackgroundColor="@android:color/white"
                 app:cardCornerRadius="24dp"
-                android:visibility="gone">
+                android:visibility="gone"
+                tools:visibility="visible">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -94,6 +98,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
                         android:gravity="center"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:maxLines="2"
                         android:text="@{information.name}"
                         tools:text="Nombre" />
 
@@ -103,7 +110,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
                         android:gravity="center"
+                        android:maxLines="1"
                         android:text="@{information.mail}"
                         tools:text="correo@email.com" />
 

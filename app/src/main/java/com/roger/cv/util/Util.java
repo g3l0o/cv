@@ -29,6 +29,23 @@ public class Util {
         }
     }
 
+    @BindingAdapter("android:circularImageUrl")
+    public static void loadCircularImage(ImageView imageView, String imageName){
+        if(imageName != null) {
+            CircularProgressDrawable circularProgressDrawable = getCircularProgressDrawable(imageView.getContext());
+
+            RequestOptions options = new RequestOptions()
+                    .placeholder(circularProgressDrawable)
+                    .error(R.drawable.ic_work);
+
+            GlideApp.with(imageView.getContext())
+                    .setDefaultRequestOptions(options)
+                    .load(getFirebaseImageLocation(imageName))
+                    .circleCrop()
+                    .into(imageView);
+        }
+    }
+
     private static StorageReference getFirebaseImageLocation(String imageUrl){
         String storage = "gs://roger-cv.appspot.com";
         FirebaseStorage mFirebaseStorage = FirebaseStorage.getInstance();
