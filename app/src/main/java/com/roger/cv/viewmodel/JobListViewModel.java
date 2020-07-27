@@ -67,7 +67,6 @@ public class JobListViewModel extends AndroidViewModel {
     }
 
     public void refresh(){
-
         long updateTime = preferenceHelper.getUpdateTime();
         long currentTime = System.nanoTime();
 
