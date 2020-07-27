@@ -55,6 +55,11 @@ public class HomeViewModel extends AndroidViewModel {
             insertTask.cancel(true);
             insertTask = null;
         }
+
+        if(retrieveTask != null){
+            retrieveTask.cancel(true);
+            retrieveTask = null;
+        }
     }
 
     public void fetchData(){
