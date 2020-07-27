@@ -32,6 +32,8 @@ public class HomeFragment extends Fragment implements HomeClickListener {
     private FragmentHomeBinding binding;
     private HomeViewModel viewModel;
 
+    private long uuidProfile = 0L;
+
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -65,6 +67,8 @@ public class HomeFragment extends Fragment implements HomeClickListener {
                     binding.progressHome.setVisibility(View.GONE);
 
                     binding.setInformation(information);
+
+                    uuidProfile = information.getUuid();
                 }
             }
         });
@@ -93,6 +97,7 @@ public class HomeFragment extends Fragment implements HomeClickListener {
     public void onJobExperienceClicked(View v) {
         NavDirections action = HomeFragmentDirections.actionExperience();
         Navigation.findNavController(v).navigate(action);
+
     }
 
     @Override
@@ -133,5 +138,12 @@ public class HomeFragment extends Fragment implements HomeClickListener {
     @Override
     public void onFactsClicked(View v) {
 
+    }
+
+    @Override
+    public void onProfileClicked(View v) {
+        HomeFragmentDirections.ActionProfile action = HomeFragmentDirections.actionProfile();
+        action.setProfileUuid(uuidProfile);
+        Navigation.findNavController(v).navigate(action);
     }
 }
