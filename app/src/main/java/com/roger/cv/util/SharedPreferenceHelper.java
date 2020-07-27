@@ -8,7 +8,8 @@ import androidx.preference.PreferenceManager;
 
 public class SharedPreferenceHelper {
 
-    private static final String PREF_TIME = "PrefTime";
+    private static final String PREF_JOBS_TIME = "PrefJobsTime";
+    private static final String PREF_INFORMATION_TIME = "PrefInformationTime";
     private static SharedPreferenceHelper instance;
     private SharedPreferences prefs;
 
@@ -23,12 +24,20 @@ public class SharedPreferenceHelper {
         return instance;
     }
 
-    public void saveUpdateTime(long time){
-        prefs.edit().putLong(PREF_TIME, time).apply();
+    public void saveJobsUpdateTime(long time){
+        prefs.edit().putLong(PREF_JOBS_TIME, time).apply();
     }
 
-    public long getUpdateTime(){
-        return prefs.getLong(PREF_TIME, 0L);
+    public long getJobsUpdateTime(){
+        return prefs.getLong(PREF_JOBS_TIME, 0L);
+    }
+
+    public void saveInformationUpdateTime(long time){
+        prefs.edit().putLong(PREF_INFORMATION_TIME, time).apply();
+    }
+
+    public long getInformationUpdateTime(){
+        return prefs.getLong(PREF_INFORMATION_TIME, 0L);
     }
 
 }

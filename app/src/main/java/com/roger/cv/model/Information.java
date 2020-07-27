@@ -1,8 +1,5 @@
 package com.roger.cv.model;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -27,18 +24,12 @@ public class Information{
     public String name;
     @ColumnInfo
     public String title;
+
     @PrimaryKey(autoGenerate = true)
     public long uuid;
 
 
     public Information(){
-        this.address = "";
-        this.birthday = "";
-        this.cellphone = "";
-        this.imageURL = "";
-        this.mail = "";
-        this.name = "";
-        this.title = "";
     }
 
     public Information(String address, String birthday, String cellphone, String imageURL, String mail, String name, String title){

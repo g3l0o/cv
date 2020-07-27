@@ -64,13 +64,13 @@ public class JobListViewModel extends AndroidViewModel {
     }
 
     public void refresh(){
-        long updateTime = preferenceHelper.getUpdateTime();
+        long updateTime = preferenceHelper.getJobsUpdateTime();
         long currentTime = System.nanoTime();
 
         if(updateTime != 0 && currentTime - updateTime < refreshTime) {
-            fetchFromLocalDatabase();
-        }else {
             fetchFromFirebase();
+        }else {
+            fetchFromLocalDatabase();
         }
     }
 
@@ -136,7 +136,7 @@ public class JobListViewModel extends AndroidViewModel {
         @Override
         protected void onPostExecute(List<Job> jobs) {
             jobsRetrieved(jobs);
-            preferenceHelper.saveUpdateTime(System.nanoTime());
+            preferenceHelper.saveJobsUpdateTime(System.nanoTime());
         }
     }
 
