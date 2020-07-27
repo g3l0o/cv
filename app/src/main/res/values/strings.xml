@@ -17,6 +17,7 @@
     <string name="contests_label">Concursos</string>
     <string name="books_label">Libros Leídos</string>
     <string name="facts_label">Datos Curiosos</string>
+    <string name="profile_label">Perfil</string>
 
     <string name="menu_communicate">Contacto</string>
     <string name="menu_send">Enviar CV</string>
