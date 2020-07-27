@@ -15,6 +15,9 @@ public interface InformationDao {
     @Query("SELECT * FROM information")
     List<Information> getAllInformation();
 
+    @Query("SELECT * FROM information WHERE uuid = :informationId")
+    Information getInformation(long informationId);
+
     @Query("DELETE FROM information")
     void deleteInformation();
 
