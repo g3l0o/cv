@@ -12,7 +12,7 @@ import com.roger.cv.model.InformationDatabase;
 
 public class ProfileViewModel extends AndroidViewModel {
 
-    MutableLiveData<Information> informationLiveData = new MutableLiveData<Information>();
+    public MutableLiveData<Information> informationLiveData = new MutableLiveData<Information>();
     private RetrieveInformationTask informationTask;
 
     public ProfileViewModel(@NonNull Application application) {
@@ -27,7 +27,7 @@ public class ProfileViewModel extends AndroidViewModel {
     @Override
     protected void onCleared() {
         super.onCleared();
-        
+
         if(informationTask != null){
             informationTask.cancel(true);
             informationTask = null;

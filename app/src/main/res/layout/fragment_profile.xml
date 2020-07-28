@@ -30,6 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:text="@{information.name}"
             style="@style/titleText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -42,10 +43,25 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:autoLink="web|email"
+            android:text="@{information.mail}"
             style="@style/subtitleText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_profile_name"
             tools:text="email@correo.com" />
+
+        <TextView
+            android:id="@+id/text_profile_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:autoLink="phone"
+            android:text="@{information.cellphone}"
+            style="@style/subtitleText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_profile_email"
+            tools:text="@tools:sample/us_phones" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
