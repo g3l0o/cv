@@ -13,8 +13,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 import com.roger.cv.model.Job;
 import com.roger.cv.model.JobDao;
 import com.roger.cv.model.JobDatabase;
@@ -41,14 +39,13 @@ public class JobListViewModel extends AndroidViewModel {
     private AsyncTask<Void, Void, List<Job>> retrieveTask;
 
     private SharedPreferenceHelper preferenceHelper = SharedPreferenceHelper.getInstance(getApplication());
-    private long refreshTime = 5 * 60 * 1_000 * 1_000 * 1_000L; //5 minutes in nanoseconds
+    private long refreshTime = 60 * 60 * 1_000 * 1_000 * 1_000L; //60 minutes in nanoseconds
 
     public JobListViewModel(@NonNull Application application) {
         super(application);
 
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mCVDatabaseReference = mFirebaseDatabase.getReference(REFERENCE);
-
     }
 
     @Override
@@ -67,27 +64,26 @@ public class JobListViewModel extends AndroidViewModel {
     }
 
     public void refresh(){
-
-        long updateTime = preferenceHelper.getUpdateTime();
+        long updateTime = preferenceHelper.getJobsUpdateTime();
         long currentTime = System.nanoTime();
 
         if(updateTime != 0 && currentTime - updateTime < refreshTime) {
-            fetchFromDatabase();
+            fetchFromFirebase();
         }else {
-            fetchFromRemote();
+            fetchFromLocalDatabase();
         }
     }
 
     public void refreshBypassCache(){
-        fetchFromRemote();
+        fetchFromFirebase();
     }
 
-    private void fetchFromDatabase(){
+    private void fetchFromLocalDatabase(){
         retrieveTask = new RetrieveJobsTask();
         retrieveTask.execute();
     }
 
-    private void fetchFromRemote(){
+    private void fetchFromFirebase(){
         isLoading.setValue(true);
         mCVDatabaseReference.child(EXPERIENCE_KEY).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -140,7 +136,7 @@ public class JobListViewModel extends AndroidViewModel {
         @Override
         protected void onPostExecute(List<Job> jobs) {
             jobsRetrieved(jobs);
-            preferenceHelper.saveUpdateTime(System.nanoTime());
+            preferenceHelper.saveJobsUpdateTime(System.nanoTime());
         }
     }
 

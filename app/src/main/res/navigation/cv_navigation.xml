@@ -18,29 +18,36 @@
             app:popEnterAnim="@anim/nav_default_enter_anim"
             app:popExitAnim="@anim/nav_default_exit_anim" />
         <action
-            android:id="@+id/action_homeFragment_to_academyFragment"
+            android:id="@+id/actionAcademy"
             app:destination="@id/academyFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_coursesFragment"
+            android:id="@+id/actionCourses"
             app:destination="@id/coursesFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_certificationsFragment"
+            android:id="@+id/actionCertifications"
             app:destination="@id/certificationsFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_technicalFragment"
+            android:id="@+id/actionTechnical"
             app:destination="@id/technicalFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_extracurricularFragment"
+            android:id="@+id/actionExtracurricular"
             app:destination="@id/extracurricularFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_contestsFragment"
+            android:id="@+id/actionContests"
             app:destination="@id/contestsFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_booksFragment"
+            android:id="@+id/actionBooks"
             app:destination="@id/booksFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_factsFragment"
+            android:id="@+id/actionFacts"
             app:destination="@id/factsFragment" />
+        <action
+            android:id="@+id/actionProfile"
+            app:destination="@id/profileFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_enter_anim"
+            app:popExitAnim="@anim/nav_default_exit_anim"/>
     </fragment>
     <fragment
         android:id="@+id/experienceFragment"
@@ -98,6 +105,16 @@
         tools:layout="@layout/fragment_job_detail" >
         <argument
             android:name="jobUuid"
+            android:defaultValue="0L"
+            app:argType="long" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.roger.cv.view.profile.ProfileFragment"
+        android:label="@string/profile_label"
+        tools:layout="@layout/fragment_profile">
+        <argument
+            android:name="profileUuid"
             android:defaultValue="0L"
             app:argType="long" />
     </fragment>
