@@ -21,4 +21,6 @@ public interface HomeClickListener {
     public void onBooksClicked(View v);
 
     public void onFactsClicked(View v);
+
+    public void onProfileClicked(View v);
 }
