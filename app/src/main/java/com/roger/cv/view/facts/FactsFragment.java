@@ -1,4 +1,4 @@
-package com.roger.cv.view;
+package com.roger.cv.view.facts;
 
 import android.os.Bundle;
 

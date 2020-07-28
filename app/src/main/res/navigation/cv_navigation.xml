@@ -95,7 +95,7 @@
         tools:layout="@layout/fragment_books" />
     <fragment
         android:id="@+id/factsFragment"
-        android:name="com.roger.cv.view.FactsFragment"
+        android:name="com.roger.cv.view.facts.FactsFragment"
         android:label="@string/facts_label"
         tools:layout="@layout/fragment_facts" />
     <fragment
