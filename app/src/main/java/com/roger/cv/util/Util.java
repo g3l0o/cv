@@ -11,6 +11,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.roger.cv.R;
 
+import java.util.Random;
+
 public class Util {
 
     @BindingAdapter("android:imageUrl")
@@ -44,6 +46,12 @@ public class Util {
                     .circleCrop()
                     .into(imageView);
         }
+    }
+
+    public static int getRandomNumber(int max) {
+        int min = 0;
+        Random random = new Random();
+        return random.nextInt(max - min) + min;
     }
 
     private static StorageReference getFirebaseImageLocation(String imageUrl){
