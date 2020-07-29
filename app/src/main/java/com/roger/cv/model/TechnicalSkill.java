@@ -2,16 +2,16 @@ package com.roger.cv.model;
 
 import java.util.ArrayList;
 
-public class TechnicalSkills {
+public class TechnicalSkill {
 
     public String technology;
     public String logo;
     public ArrayList<String> skills;
 
-    public TechnicalSkills() {
+    public TechnicalSkill() {
     }
 
-    public TechnicalSkills(String technology, String logo, ArrayList<String> skills) {
+    public TechnicalSkill(String technology, String logo, ArrayList<String> skills) {
         this.technology = technology;
         this.logo = logo;
         this.skills = skills;
