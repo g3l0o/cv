@@ -1,6 +1,7 @@
 package com.roger.cv.model;
 
 public class Fact {
+
     String fact;
 
     public Fact(){}
@@ -16,4 +17,5 @@ public class Fact {
     public void setFact(String fact) {
         this.fact = fact;
     }
+
 }
