@@ -58,10 +58,13 @@
 
         <ImageButton
             android:id="@+id/button_fact"
-            android:layout_width="90dp"
-            android:layout_height="60dp"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:layout_margin="30dp"
             android:onClick="@{clickListener::onRandomClicked}"
+            android:src="@drawable/fact_red_button"
+            android:background="@null"
+            android:scaleType="fitXY"
             android:clickable="true"
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
