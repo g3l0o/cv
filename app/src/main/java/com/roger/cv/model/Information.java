@@ -1,8 +1,20 @@
 package com.roger.cv.model;
 
+import android.bluetooth.le.PeriodicAdvertisingParameters;
+import android.icu.util.LocaleData;
+import android.text.Html;
+import android.text.Spanned;
+
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 /**
  * Created by roger on 12/03/17.
@@ -105,4 +117,21 @@ public class Information{
     public void setUuid(long uuid) {
         this.uuid = uuid;
     }
+
+    public int getAge(){
+        LocalDate birthDate = LocalDate.parse(birthday, DateTimeFormatter.ofPattern("yyyy/MM/dd"));
+
+        LocalDate currentDate = LocalDate.now();
+
+        return Period.between(birthDate, currentDate).getYears();
+
+    }
+
+    public String getWhatsApp(){
+
+        String whatsAppUrl = "https://api.whatsapp.com/send?phone=%2B521" + cellphone;
+
+        return whatsAppUrl;
+    }
+
 }
