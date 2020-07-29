@@ -4,6 +4,11 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * Created by roger on 20/03/17.
  */
@@ -41,8 +46,25 @@ public class Job {
         this.jobPosition = jobPosition;
     }
 
-    public String getCurrent() {
-        return current;
+    public boolean getCurrent() {
+        return Boolean.parseBoolean(this.current);
+    }
+    public String getDateRange(){
+        String range = "";
+        DateFormat dateFormat = new SimpleDateFormat("MMMM yyyy");
+        try {
+            Date startDate = new SimpleDateFormat("yyyy/MM/dd").parse(getStartDate());
+            range = range + dateFormat.format(startDate) + " - ";
+            if(getCurrent()){
+                range = range + "Actual";
+            }else {
+                Date endDate = new SimpleDateFormat("yyyy/MM/dd").parse(getEndDate());
+                range = range + dateFormat.format(endDate);
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return range;
     }
 
     public void setCurrent(String current) {

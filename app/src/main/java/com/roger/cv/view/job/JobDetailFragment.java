@@ -8,21 +8,17 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.navigation.ui.NavigationUI;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.roger.cv.R;
 import com.roger.cv.databinding.FragmentJobDetailBinding;
 import com.roger.cv.model.Job;
-import com.roger.cv.util.Util;
+import com.roger.cv.view.MainActivity;
 import com.roger.cv.viewmodel.JobDetailViewModel;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class JobDetailFragment extends Fragment {
 
@@ -57,11 +53,16 @@ public class JobDetailFragment extends Fragment {
         observeViewModel();
     }
 
+    private void bindJobData(Job job){
+        binding.setJob(job);
+        ((MainActivity) getActivity()).setToolbarTitle(job.getName());
+    }
+
     private void observeViewModel() {
         viewModel.jobLiveData.observe(getViewLifecycleOwner(), new Observer<Job>() {
             @Override
             public void onChanged(Job job) {
-               binding.setJob(job);
+               bindJobData(job);
             }
         });
     }

@@ -43,8 +43,10 @@ public class JobListAdapter extends RecyclerView.Adapter<JobListAdapter.JobViewH
 
     @Override
     public void onBindViewHolder(@NonNull JobViewHolder holder, final int position) {
-        holder.itemView.setJob(jobsList.get(position));
+        Job job = jobsList.get(position);
+        holder.itemView.setJob(job);
         holder.itemView.setClickListener(this);
+        holder.itemView.textCurrent.setVisibility(job.getCurrent() ? View.VISIBLE : View.GONE);
     }
 
     @Override

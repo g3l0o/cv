@@ -8,18 +8,15 @@
             name="clickListener"
             type="com.roger.cv.view.home.HomeClickListener" />
     </data>
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/content_information"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:context="com.roger.cv.InformationActivity">
+
 
         <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            tools:context="com.roger.cv.InformationActivity"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:background="@color/cardview_light_background">
 
             <ImageView
@@ -65,7 +62,7 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/card_home_menu"
                 android:layout_width="match_parent"
-                android:layout_height="700dp"
+                android:layout_height="match_parent"
                 android:layout_below="@+id/image_header_cover"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="-30dp"
@@ -90,14 +87,15 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
                         android:background="@null"
-                        android:src="@drawable/ic_settings" />
+                        android:src="@drawable/ic_settings"
+                        android:visibility="gone"/>
 
                     <TextView
                         android:id="@+id/text_name"
                         style="@style/titleText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="50dp"
                         android:gravity="center"
                         android:layout_marginStart="8dp"
                         android:layout_marginEnd="8dp"
@@ -110,9 +108,7 @@
                         style="@style/subtitleText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginEnd="8dp"
+                        android:layout_margin="10dp"
                         android:gravity="center"
                         android:maxLines="1"
                         android:text="@{information.mail}"
@@ -124,18 +120,14 @@
                         android:layout_weight="1"
                         android:alignmentMode="alignMargins"
                         android:columnCount="3"
-                        android:columnOrderPreserved="false"
-                        android:rowCount="3">
+                        android:columnOrderPreserved="false">
 
 
                         <androidx.cardview.widget.CardView
                             android:id="@+id/card_job"
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:layout_rowWeight="1"
-                            android:layout_columnWeight="1"
-                            android:layout_margin="10dp"
+                            style="@style/homeItem"
                             app:cardElevation="8dp"
+                            app:cardCornerRadius="10dp"
                             android:onClick="@{clickListener::onJobExperienceClicked}">
 
                             <LinearLayout
@@ -161,12 +153,9 @@
 
                         <androidx.cardview.widget.CardView
                             android:id="@+id/card_academy"
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:layout_rowWeight="1"
-                            android:layout_columnWeight="1"
-                            android:layout_margin="10dp"
+                            style="@style/homeItem"
                             app:cardElevation="8dp"
+                            app:cardCornerRadius="10dp"
                             android:onClick="@{clickListener::onAcademyClicked}">
 
                             <LinearLayout
@@ -192,12 +181,9 @@
 
                         <androidx.cardview.widget.CardView
                             android:id="@+id/card_courses"
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:layout_rowWeight="1"
-                            android:layout_columnWeight="1"
-                            android:layout_margin="10dp"
+                            style="@style/homeItem"
                             app:cardElevation="8dp"
+                            app:cardCornerRadius="10dp"
                             android:onClick="@{clickListener::onCoursesClicked}">
 
                             <LinearLayout
@@ -223,12 +209,9 @@
 
                         <androidx.cardview.widget.CardView
                             android:id="@+id/card_certifications"
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:layout_rowWeight="1"
-                            android:layout_columnWeight="1"
-                            android:layout_margin="10dp"
+                            style="@style/homeItem"
                             app:cardElevation="8dp"
+                            app:cardCornerRadius="10dp"
                             android:onClick="@{clickListener::onCertificationsClicked}">
 
                             <LinearLayout
@@ -254,12 +237,9 @@
 
                         <androidx.cardview.widget.CardView
                             android:id="@+id/card_technical"
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:layout_rowWeight="1"
-                            android:layout_columnWeight="1"
-                            android:layout_margin="10dp"
+                            style="@style/homeItem"
                             app:cardElevation="8dp"
+                            app:cardCornerRadius="10dp"
                             android:onClick="@{clickListener::onTechnicalClicked}">
 
                             <LinearLayout
@@ -285,14 +265,41 @@
                         </androidx.cardview.widget.CardView>
 
                         <androidx.cardview.widget.CardView
-                            android:id="@+id/card_exracurricular"
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:layout_rowWeight="1"
-                            android:layout_columnWeight="1"
-                            android:layout_margin="10dp"
+                            android:id="@+id/card_facts"
+                            style="@style/homeItem"
                             app:cardElevation="8dp"
-                            android:onClick="@{clickListener::onExtracurricularClicked}">
+                            app:cardCornerRadius="10dp"
+                            android:onClick="@{clickListener::onFactsClicked}">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/ic_fun_facts" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    style="@style/homeItemsText"
+                                    android:text="@string/facts_label"
+                                    android:textAlignment="center" />
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/card_exracurricular"
+                            style="@style/homeItem"
+                            app:cardElevation="8dp"
+                            app:cardCornerRadius="10dp"
+                            android:onClick="@{clickListener::onExtracurricularClicked}"
+                            android:visibility="gone">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -318,13 +325,11 @@
 
                         <androidx.cardview.widget.CardView
                             android:id="@+id/card_contests"
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:layout_rowWeight="1"
-                            android:layout_columnWeight="1"
-                            android:layout_margin="10dp"
+                            style="@style/homeItem"
                             app:cardElevation="8dp"
-                            android:onClick="@{clickListener::onContestsClicked}">
+                            app:cardCornerRadius="10dp"
+                            android:onClick="@{clickListener::onContestsClicked}"
+                            android:visibility="gone">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -350,13 +355,11 @@
 
                         <androidx.cardview.widget.CardView
                             android:id="@+id/card_books"
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:layout_rowWeight="1"
-                            android:layout_columnWeight="1"
-                            android:layout_margin="10dp"
+                            style="@style/homeItem"
                             app:cardElevation="8dp"
-                            android:onClick="@{clickListener::onBooksClicked}">
+                            app:cardCornerRadius="10dp"
+                            android:onClick="@{clickListener::onBooksClicked}"
+                            android:visibility="gone">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -380,37 +383,7 @@
 
                         </androidx.cardview.widget.CardView>
 
-                        <androidx.cardview.widget.CardView
-                            android:id="@+id/card_facts"
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:layout_rowWeight="1"
-                            android:layout_columnWeight="1"
-                            android:layout_margin="10dp"
-                            app:cardElevation="8dp"
-                            android:onClick="@{clickListener::onFactsClicked}">
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:gravity="center"
-                                android:orientation="vertical">
-
-                                <ImageView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:src="@drawable/ic_fun_facts" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    style="@style/homeItemsText"
-                                    android:text="@string/facts_label"
-                                    android:textAlignment="center" />
-
-                            </LinearLayout>
-
-                        </androidx.cardview.widget.CardView>
 
                     </GridLayout>
 
@@ -418,8 +391,6 @@
             </androidx.cardview.widget.CardView>
 
         </RelativeLayout>
-
-    </ScrollView>
 
 </layout>
 
