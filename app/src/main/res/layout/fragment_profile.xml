@@ -4,64 +4,188 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="information"
             type="com.roger.cv.model.Information" />
+
+        <variable
+            name="clickListener"
+            type="com.roger.cv.view.profile.ProfileClickListener" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".view.profile.ProfileFragment">
 
         <ImageView
-            android:id="@+id/image_profile_pic"
-            android:layout_width="wrap_content"
+            android:id="@+id/image_header_cover"
+            android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:imageUrl="@{information.imageURL}"
             android:scaleType="centerCrop"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@tools:sample/backgrounds/scenic" />
+            android:src="@drawable/home_background" />
+
+        <ImageView
+            android:id="@+id/imagebutton_user_profile"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_below="@+id/image_header_cover"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="-75dp"
+            android:circularImageUrl="@{information.imageURL}"
+            android:elevation="4dp"
+            android:padding="3dp"
+            android:scaleType="centerCrop" />
 
         <TextView
-            android:id="@+id/text_profile_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="@{information.name}"
+            android:id="@+id/text_name"
             style="@style/titleText"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/image_profile_pic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imagebutton_user_profile"
+            android:layout_margin="10dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:maxLines="2"
+            android:text="@{information.name}"
             tools:text="@tools:sample/full_names" />
 
-        <TextView
-            android:id="@+id/text_profile_email"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:autoLink="web|email"
-            android:text="@{information.mail}"
-            style="@style/subtitleText"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_profile_name"
-            tools:text="email@correo.com" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/text_name"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/text_profile_phone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:autoLink="phone"
-            android:text="@{information.cellphone}"
-            style="@style/subtitleText"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_profile_email"
-            tools:text="@tools:sample/us_phones" />
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:elevation="4dp"
+                app:cardCornerRadius="20dp">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_gravity="center">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:gravity="center_vertical"
+                        android:drawableStart="@drawable/ic_academy"
+                        android:drawablePadding="5dp"
+                        style="@style/subtitleText"
+                        android:text="@{information.title}"
+                        tools:text="Ingeniero en Sistemas Computacionales" />
+
+                    <TextView
+                        android:id="@+id/text_profile_age"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:gravity="center_vertical"
+                        android:drawableStart="@drawable/ic_cake"
+                        android:drawablePadding="5dp"
+                        style="@style/subtitleText"
+                        tools:text="27 años" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:gravity="center_vertical"
+                        android:drawableStart="@drawable/ic_location"
+                        android:drawablePadding="5dp"
+                        style="@style/subtitleText"
+                        android:text="@{information.address}"
+                        tools:text="México" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:elevation="4dp"
+                app:cardCornerRadius="20dp" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_gravity="center">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:gravity="center_vertical"
+                        android:drawableStart="@drawable/ic_phone"
+                        android:drawablePadding="5dp"
+                        style="@style/subtitleText"
+                        android:text="@{information.cellphone}"
+                        android:autoLink="phone"
+                        tools:text="@tools:sample/us_phones" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:gravity="center_vertical"
+                        android:drawableStart="@drawable/ic_email"
+                        android:drawablePadding="5dp"
+                        android:text="@{information.mail}"
+                        android:autoLink="email"
+                        style="@style/subtitleText"
+                        tools:text="test@mail.com" />
+
+                    <TextView
+                        android:id="@+id/text_send_chat"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:gravity="center_vertical"
+                        android:drawableStart="@drawable/ic_chat"
+                        android:drawablePadding="5dp"
+                        android:clickable="true"
+                        android:onClick="@{clickListener::onClickWhatsApp}"
+                        style="@style/subtitleText"
+                        android:text="@string/send_whatsapp"/>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </RelativeLayout>
 </layout>
