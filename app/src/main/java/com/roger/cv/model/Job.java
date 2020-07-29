@@ -41,8 +41,8 @@ public class Job {
         this.jobPosition = jobPosition;
     }
 
-    public String getCurrent() {
-        return current;
+    public boolean getCurrent() {
+        return Boolean.parseBoolean(this.current);
     }
 
     public void setCurrent(String current) {
