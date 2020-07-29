@@ -1,4 +1,4 @@
-package com.roger.cv.view;
+package com.roger.cv.view.technical;
 
 import android.os.Bundle;
 
