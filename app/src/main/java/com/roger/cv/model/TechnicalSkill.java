@@ -40,4 +40,8 @@ public class TechnicalSkill {
     public void setSkills(ArrayList<String> skills) {
         this.skills = skills;
     }
+
+    public String getSkillsText(){
+        return null;
+    }
 }
