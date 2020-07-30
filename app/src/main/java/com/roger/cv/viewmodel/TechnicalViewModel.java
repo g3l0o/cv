@@ -57,6 +57,8 @@ public class TechnicalViewModel extends AndroidViewModel {
                     technicalSkillsList.add(skill);
                 }
                 technicalSkills.setValue(technicalSkillsList);
+                isLoading.setValue(false);
+                isError.setValue(false);
             }
 
             @Override

@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -51,8 +52,23 @@ public class TechnicalFragment extends Fragment {
         binding.recyclerTechnicalList.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.recyclerTechnicalList.setAdapter(technicalListAdapter);
 
+        binding.swiperefreshTechnical.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                refreshManually();
+                binding.swiperefreshTechnical.setRefreshing(false);
+            }
+        });
+
         observeViewModel();
 
+    }
+
+    private void refreshManually() {
+        binding.recyclerTechnicalList.setVisibility(View.GONE);
+        binding.textErrorMessage.setVisibility(View.GONE);
+        binding.progressLoading.setVisibility(View.VISIBLE);
+        viewModel.fetchData();
     }
 
     private void observeViewModel() {
@@ -69,14 +85,19 @@ public class TechnicalFragment extends Fragment {
         viewModel.isError.observe(getViewLifecycleOwner(), new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean isError) {
-
+                binding.progressLoading.setVisibility(View.GONE);
+                binding.textErrorMessage.setVisibility(isError ? View.VISIBLE : View.GONE);
+                binding.recyclerTechnicalList.setVisibility(isError ? View.GONE : View.VISIBLE);
             }
         });
 
         viewModel.isLoading.observe(getViewLifecycleOwner(), new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean isLoading) {
-
+                if(isLoading){
+                    binding.textErrorMessage.setVisibility(View.GONE);
+                    binding.recyclerTechnicalList.setVisibility(View.GONE);
+                }
             }
         });
 
