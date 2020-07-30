@@ -12,11 +12,11 @@
             type="com.roger.cv.view.JobClickListener" />
     </data>
     
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:orientation="vertical">
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_margin="10dp"-->
+<!--        android:orientation="vertical">-->
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card_company"
@@ -25,6 +25,7 @@
             android:layout_gravity="center"
             android:onClick="@{clickListener::onJobClicked}"
             android:elevation="4dp"
+            android:layout_margin="10dp"
             app:cardCornerRadius="10dp">
 
             <TextView
@@ -111,18 +112,18 @@
 
         </androidx.cardview.widget.CardView>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/divider"
-            android:ellipsize="end"
-            android:maxLines="3"
-            android:padding="5dp"
-            android:textColor="@color/colorSecondary_text"
-            android:textSize="15sp"
-            android:visibility="gone"
-            tools:text="@tools:sample/lorem/random" />
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@color/divider"-->
+<!--            android:ellipsize="end"-->
+<!--            android:maxLines="3"-->
+<!--            android:padding="5dp"-->
+<!--            android:textColor="@color/colorSecondary_text"-->
+<!--            android:textSize="15sp"-->
+<!--            android:visibility="gone"-->
+<!--            tools:text="@tools:sample/lorem/random" />-->
 
-    </LinearLayout>
+<!--    </LinearLayout>-->
 </layout>
     
