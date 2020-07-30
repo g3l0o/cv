@@ -12,7 +12,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.roger.cv.model.AcademicStudies;
-import com.roger.cv.model.TechnicalSkill;
+import com.roger.cv.model.Study;
 
 import java.util.ArrayList;
 import java.util.List;

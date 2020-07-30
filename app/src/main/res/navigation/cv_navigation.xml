@@ -60,7 +60,7 @@
     </fragment>
     <fragment
         android:id="@+id/academyFragment"
-        android:name="com.roger.cv.view.AcademyFragment"
+        android:name="com.roger.cv.view.academy.AcademyFragment"
         android:label="@string/academy_label"
         tools:layout="@layout/fragment_academy" />
     <fragment
