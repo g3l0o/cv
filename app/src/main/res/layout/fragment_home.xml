@@ -101,6 +101,8 @@
                         android:layout_marginEnd="8dp"
                         android:maxLines="2"
                         android:text="@{information.name}"
+                        android:clickable="true"
+                        android:onClick="@{clickListener::onProfileClicked}"
                         tools:text="Nombre" />
 
                     <TextView
@@ -112,6 +114,8 @@
                         android:gravity="center"
                         android:maxLines="1"
                         android:text="@{information.mail}"
+                        android:clickable="true"
+                        android:onClick="@{clickListener::onProfileClicked}"
                         tools:text="correo@email.com" />
 
                     <GridLayout
