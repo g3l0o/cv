@@ -2,17 +2,17 @@ package com.roger.cv.model;
 
 import java.util.ArrayList;
 
-public class AcademyStudies {
+public class AcademicStudies {
 
     public String logo;
     public String place;
     public String school;
     public ArrayList<Studies> studies;
 
-    public AcademyStudies() {
+    public AcademicStudies() {
     }
 
-    public AcademyStudies(String logo, String place, String school, ArrayList<Studies> studies) {
+    public AcademicStudies(String logo, String place, String school, ArrayList<Studies> studies) {
         this.logo = logo;
         this.place = place;
         this.school = school;
