@@ -42,4 +42,12 @@ public class AcademicStudies {
         this.school = school;
     }
 
+    public String getDateRange(){
+        return null;
+    }
+
+    public String getStudiesText(){
+        return null;
+    }
+
 }
