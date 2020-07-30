@@ -21,33 +21,38 @@
         android:layout_height="wrap_content"
         android:padding="5dp">
 
-        <ImageButton
-            android:id="@+id/image_technical_logo"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:layout_margin="10dp"
-            android:background="@null"
-            android:circularImageUrl="@{technicalSkill.logo}"
-            android:scaleType="fitCenter"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/text_technical_skills"
-            tools:src="@drawable/ic_technical" />
 
-        <TextView
-            android:id="@+id/text_technical_name"
+        <LinearLayout
+            android:id="@+id/linear_technical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_alignParentStart="true"
-            android:text="@{technicalSkill.technology}"
-            app:layout_constraintEnd_toStartOf="@+id/text_technical_skills"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/image_technical_logo"
-            tools:text="Technology" />
+            app:layout_constraintEnd_toStartOf="@id/text_technical_skills"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageButton
+                android:id="@+id/image_technical_logo"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_margin="10dp"
+                android:background="@null"
+                android:imageUrl="@{technicalSkill.logo}"
+                android:scaleType="fitCenter"
+                tools:src="@drawable/ic_technical" />
+
+            <TextView
+                android:id="@+id/text_technical_name"
+                style="@style/subtitleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="@{technicalSkill.technology}"
+                tools:text="Technology" />
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/text_technical_skills"
@@ -59,9 +64,9 @@
             android:text="@{technicalSkill.skillsText}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/image_technical_logo"
+            app:layout_constraintStart_toEndOf="@+id/linear_technical"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="a lot of text" />
+            tools:text="a lot of text\ntext\ntext\ntext\ntext\ntext\ntext\ntext\ntext" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

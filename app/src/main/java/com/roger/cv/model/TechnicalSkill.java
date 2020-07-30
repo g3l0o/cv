@@ -42,6 +42,13 @@ public class TechnicalSkill {
     }
 
     public String getSkillsText(){
-        return null;
+        String bulletIcon = "✓ ";
+        StringBuilder builder = new StringBuilder();
+
+        for (String skill: skills) {
+            builder.append(bulletIcon).append(skill).append("\n");
+        }
+        return builder.toString();
+
     }
 }

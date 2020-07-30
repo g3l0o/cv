@@ -24,7 +24,7 @@ public class TechnicalListAdapter extends RecyclerView.Adapter<TechnicalListAdap
     }
 
     public void updateTechnicalList(List<TechnicalSkill> technicalList){
-        technicalList.clear();
+        technicalSkillList.clear();
         technicalSkillList.addAll(technicalList);
         notifyDataSetChanged();
     }
