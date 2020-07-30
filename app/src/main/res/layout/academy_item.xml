@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="academy"
+            type="com.roger.cv.model.AcademicStudies" />
+    </data>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:elevation="4dp"
+    app:cardCornerRadius="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:imageUrl="@{academy.logo}"
+            tools:src="@drawable/ic_academy" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:textAlignment="center"
+            style="@style/titleText"
+            android:text="@{academy.school}"
+            tools:text="@tools:sample/full_names"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            style="@style/subtitleText"
+            android:text="@{academy.place}"
+            tools:text="@tools:sample/cities"/>
+
+        <TextView
+            android:id="@+id/text_academic_studies"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:textAlignment="textStart" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
+</layout>
