@@ -19,17 +19,18 @@
         <TextView
             android:id="@+id/text_fact"
             style="@style/titleText"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="40dp"
             android:text="@{fact.fact}"
             android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@id/button_fact"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.4"
-            tools:text="@tools:sample/full_names"
+            tools:text="@tools:sample/lorem"
             tools:visibility="visible" />
 
         <ProgressBar
@@ -61,16 +62,17 @@
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:layout_margin="30dp"
-            android:onClick="@{clickListener::onRandomClicked}"
-            android:src="@drawable/fact_red_button"
             android:background="@null"
-            android:scaleType="fitXY"
             android:clickable="true"
+            android:onClick="@{clickListener::onRandomClicked}"
+            android:scaleType="fitXY"
+            android:src="@drawable/fact_red_button"
             android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_fact"
-            tools:visibility="visible"/>
+            tools:visibility="visible" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
