@@ -49,22 +49,29 @@ public class Job {
     public boolean getCurrent() {
         return Boolean.parseBoolean(this.current);
     }
+
     public String getDateRange(){
-        String range = "";
-        DateFormat dateFormat = new SimpleDateFormat("MMMM yyyy");
+        String showDatePattern = "MMMM yyyy";
+        String fireBaseDatePattern = "yyyy/MM/dd";
+        String showDateSeparator = " - ";
+        String currentString = "Actual";
+
+        StringBuilder dateRange = new StringBuilder();
+        DateFormat dateFormat = new SimpleDateFormat(showDatePattern);
+
         try {
-            Date startDate = new SimpleDateFormat("yyyy/MM/dd").parse(getStartDate());
-            range = range + dateFormat.format(startDate) + " - ";
+            Date startDate = new SimpleDateFormat(fireBaseDatePattern).parse(getStartDate());
+            dateRange.append(dateFormat.format(startDate)).append(showDateSeparator);
             if(getCurrent()){
-                range = range + "Actual";
+                dateRange.append(currentString);
             }else {
-                Date endDate = new SimpleDateFormat("yyyy/MM/dd").parse(getEndDate());
-                range = range + dateFormat.format(endDate);
+                Date endDate = new SimpleDateFormat(fireBaseDatePattern).parse(getEndDate());
+                dateRange.append(dateFormat.format(endDate));
             }
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        return range;
+        return dateRange.toString();
     }
 
     public void setCurrent(String current) {

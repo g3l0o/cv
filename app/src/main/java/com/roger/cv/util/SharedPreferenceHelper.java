@@ -10,6 +10,7 @@ public class SharedPreferenceHelper {
 
     private static final String PREF_JOBS_TIME = "PrefJobsTime";
     private static final String PREF_INFORMATION_TIME = "PrefInformationTime";
+
     private static SharedPreferenceHelper instance;
     private SharedPreferences prefs;
 

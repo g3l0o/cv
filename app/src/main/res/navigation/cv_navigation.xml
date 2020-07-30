@@ -75,7 +75,7 @@
         tools:layout="@layout/fragment_certifications" />
     <fragment
         android:id="@+id/technicalFragment"
-        android:name="com.roger.cv.view.TechnicalFragment"
+        android:name="com.roger.cv.view.technical.TechnicalFragment"
         android:label="@string/technical_label"
         tools:layout="@layout/fragment_technical" />
     <fragment
