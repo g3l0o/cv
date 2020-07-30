@@ -74,8 +74,9 @@ public class AcademicStudies {
         StringBuilder builder = new StringBuilder();
 
         for (Study s: studies) {
-            builder.append(bulletIcon).append(s.degree).append(" - ").append("<b>").append(s.degreeTitle).append("</b>").append("<br>")
-                    .append("\t\t\t").append(getDateRange(s.startDate, s.endDate)).append("<br>");
+            builder.append(bulletIcon).append(s.degree).append("<br>")
+                    .append("\t\t").append("<b>").append(s.degreeTitle).append("</b>").append("<br>")
+                    .append("\t\t").append(getDateRange(s.startDate, s.endDate)).append("<br><br>");
         }
 
         return builder.toString();
