@@ -1,5 +1,6 @@
 package com.roger.cv.view.academy;
 
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,6 +42,7 @@ public class AcademyListAdapter extends RecyclerView.Adapter<AcademyListAdapter.
     public void onBindViewHolder(@NonNull AcademyViewHolder holder, int position) {
         AcademicStudies academicStudies = academicStudiesList.get(position);
         holder.itemView.setAcademy(academicStudies);
+        holder.itemView.textAcademicStudies.setText(Html.fromHtml(academicStudies.getStudiesText(), Html.FROM_HTML_MODE_COMPACT));
     }
 
     @Override

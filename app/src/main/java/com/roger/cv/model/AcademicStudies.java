@@ -1,6 +1,10 @@
 package com.roger.cv.model;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class AcademicStudies {
 
@@ -42,12 +46,39 @@ public class AcademicStudies {
         this.school = school;
     }
 
-    public String getDateRange(){
-        return null;
+    private String getDateRange(String startDateString, String endDateString){
+        String showDatePattern = "MMMM yyyy";
+        String fireBaseDatePattern = "yyyy/MM/dd";
+        String showDateSeparator = " - ";
+
+        StringBuilder dateRange = new StringBuilder();
+        DateFormat dateFormat = new SimpleDateFormat(showDatePattern);
+
+        try {
+            Date startDate = new SimpleDateFormat(fireBaseDatePattern).parse(startDateString);
+            dateRange.append("(").append(dateFormat.format(startDate)).append(showDateSeparator);
+
+            Date endDate = new SimpleDateFormat(fireBaseDatePattern).parse(endDateString);
+            dateRange.append(dateFormat.format(endDate)).append(")");
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return dateRange.toString();
+
     }
 
     public String getStudiesText(){
-        return null;
+
+        String bulletIcon = "✓ ";
+        StringBuilder builder = new StringBuilder();
+
+        for (Study s: studies) {
+            builder.append(bulletIcon).append(s.degree).append(" - ").append("<b>").append(s.degreeTitle).append("</b>").append("<br>")
+                    .append("\t\t\t").append(getDateRange(s.startDate, s.endDate)).append("<br>");
+        }
+
+        return builder.toString();
     }
 
 }
