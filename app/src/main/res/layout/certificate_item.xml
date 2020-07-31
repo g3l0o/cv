@@ -59,6 +59,17 @@
                     android:text="@{certificate.expeditedDate}"
                     tools:text="@tools:sample/date/ddmmyy"/>
 
+                <TextView
+                    android:id="@+id/text_certificate_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2.5dp"
+                    style="@style/subtitleText"
+                    android:text="@{certificate.certificateNumberText}"
+                    android:visibility="gone"
+                    tools:visibility="visible"
+                    tools:text="@tools:sample/us_zipcodes"/>
+
             </LinearLayout>
 
         </LinearLayout>

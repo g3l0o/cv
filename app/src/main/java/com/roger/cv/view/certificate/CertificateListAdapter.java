@@ -41,6 +41,7 @@ public class CertificateListAdapter extends RecyclerView.Adapter<CertificateList
     public void onBindViewHolder(@NonNull CertificateViewHolder holder, int position) {
         Certificate certificate = certificateList.get(position);
         holder.itemView.setCertificate(certificate);
+        holder.itemView.textCertificateNumber.setVisibility(certificate.getCertificateNumber().isEmpty() ? View.GONE : View.VISIBLE);
     }
 
     @Override
