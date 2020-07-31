@@ -1,22 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
+
     <data>
+
         <variable
             name="information"
             type="com.roger.cv.model.Information" />
+
         <variable
             name="clickListener"
             type="com.roger.cv.view.home.HomeClickListener" />
     </data>
 
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context="com.roger.cv.InformationActivity">
 
         <RelativeLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
-            tools:context="com.roger.cv.InformationActivity"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:background="@color/cardview_light_background">
 
             <ImageView
@@ -33,12 +38,12 @@
                 android:layout_below="@+id/image_header_cover"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="-105dp"
-                android:elevation="4dp"
-                android:padding="3dp"
-                android:scaleType="centerCrop"
                 android:background="@null"
+                android:circularImageUrl="@{information.imageURL}"
+                android:elevation="4dp"
                 android:onClick="@{clickListener::onProfileClicked}"
-                android:circularImageUrl="@{information.imageURL}"/>
+                android:padding="3dp"
+                android:scaleType="centerCrop" />
 
             <ProgressBar
                 android:id="@+id/progress_home"
@@ -47,7 +52,7 @@
                 android:layout_below="@+id/image_header_cover"
                 android:layout_centerInParent="true"
                 android:layout_marginTop="150dp"
-                tools:visibility="gone"/>
+                tools:visibility="gone" />
 
             <TextView
                 android:id="@+id/text_error_home"
@@ -69,9 +74,9 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp"
                 android:padding="5dp"
+                android:visibility="gone"
                 app:cardBackgroundColor="@android:color/white"
                 app:cardCornerRadius="24dp"
-                android:visibility="gone"
                 tools:visibility="visible">
 
                 <LinearLayout
@@ -88,21 +93,21 @@
                         android:layout_marginStart="5dp"
                         android:background="@null"
                         android:src="@drawable/ic_settings"
-                        android:visibility="gone"/>
+                        android:visibility="gone" />
 
                     <TextView
                         android:id="@+id/text_name"
                         style="@style/titleText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="50dp"
-                        android:gravity="center"
                         android:layout_marginStart="8dp"
+                        android:layout_marginTop="50dp"
                         android:layout_marginEnd="8dp"
-                        android:maxLines="2"
-                        android:text="@{information.name}"
                         android:clickable="true"
+                        android:gravity="center"
+                        android:maxLines="2"
                         android:onClick="@{clickListener::onProfileClicked}"
+                        android:text="@{information.name}"
                         tools:text="Nombre" />
 
                     <TextView
@@ -111,11 +116,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
+                        android:clickable="true"
                         android:gravity="center"
                         android:maxLines="1"
-                        android:text="@{information.mail}"
-                        android:clickable="true"
                         android:onClick="@{clickListener::onProfileClicked}"
+                        android:text="@{information.mail}"
                         tools:text="correo@email.com" />
 
                     <GridLayout
@@ -124,15 +129,16 @@
                         android:layout_weight="1"
                         android:alignmentMode="alignMargins"
                         android:columnCount="3"
-                        android:columnOrderPreserved="false">
+                        android:columnOrderPreserved="false"
+                        android:minHeight="350dp">
 
 
                         <androidx.cardview.widget.CardView
                             android:id="@+id/card_job"
                             style="@style/homeItem"
-                            app:cardElevation="8dp"
+                            android:onClick="@{clickListener::onJobExperienceClicked}"
                             app:cardCornerRadius="10dp"
-                            android:onClick="@{clickListener::onJobExperienceClicked}">
+                            app:cardElevation="8dp">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -158,9 +164,9 @@
                         <androidx.cardview.widget.CardView
                             android:id="@+id/card_academy"
                             style="@style/homeItem"
-                            app:cardElevation="8dp"
+                            android:onClick="@{clickListener::onAcademyClicked}"
                             app:cardCornerRadius="10dp"
-                            android:onClick="@{clickListener::onAcademyClicked}">
+                            app:cardElevation="8dp">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -186,9 +192,9 @@
                         <androidx.cardview.widget.CardView
                             android:id="@+id/card_courses"
                             style="@style/homeItem"
-                            app:cardElevation="8dp"
+                            android:onClick="@{clickListener::onCoursesClicked}"
                             app:cardCornerRadius="10dp"
-                            android:onClick="@{clickListener::onCoursesClicked}">
+                            app:cardElevation="8dp">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -214,9 +220,9 @@
                         <androidx.cardview.widget.CardView
                             android:id="@+id/card_certifications"
                             style="@style/homeItem"
-                            app:cardElevation="8dp"
+                            android:onClick="@{clickListener::onCertificationsClicked}"
                             app:cardCornerRadius="10dp"
-                            android:onClick="@{clickListener::onCertificationsClicked}">
+                            app:cardElevation="8dp">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -242,9 +248,9 @@
                         <androidx.cardview.widget.CardView
                             android:id="@+id/card_technical"
                             style="@style/homeItem"
-                            app:cardElevation="8dp"
+                            android:onClick="@{clickListener::onTechnicalClicked}"
                             app:cardCornerRadius="10dp"
-                            android:onClick="@{clickListener::onTechnicalClicked}">
+                            app:cardElevation="8dp">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -258,9 +264,9 @@
                                     android:src="@drawable/ic_technical" />
 
                                 <TextView
+                                    style="@style/homeItemsText"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    style="@style/homeItemsText"
                                     android:text="@string/technical_label"
                                     android:textAlignment="center" />
 
@@ -271,9 +277,9 @@
                         <androidx.cardview.widget.CardView
                             android:id="@+id/card_facts"
                             style="@style/homeItem"
-                            app:cardElevation="8dp"
+                            android:onClick="@{clickListener::onFactsClicked}"
                             app:cardCornerRadius="10dp"
-                            android:onClick="@{clickListener::onFactsClicked}">
+                            app:cardElevation="8dp">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -287,9 +293,9 @@
                                     android:src="@drawable/ic_fun_facts" />
 
                                 <TextView
+                                    style="@style/homeItemsText"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    style="@style/homeItemsText"
                                     android:text="@string/facts_label"
                                     android:textAlignment="center" />
 
@@ -300,10 +306,10 @@
                         <androidx.cardview.widget.CardView
                             android:id="@+id/card_exracurricular"
                             style="@style/homeItem"
-                            app:cardElevation="8dp"
-                            app:cardCornerRadius="10dp"
                             android:onClick="@{clickListener::onExtracurricularClicked}"
-                            android:visibility="gone">
+                            android:visibility="gone"
+                            app:cardCornerRadius="10dp"
+                            app:cardElevation="8dp">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -317,9 +323,9 @@
                                     android:src="@drawable/ic_extracurricular" />
 
                                 <TextView
+                                    style="@style/homeItemsText"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    style="@style/homeItemsText"
                                     android:text="@string/extracurricular_label"
                                     android:textAlignment="center" />
 
@@ -330,10 +336,10 @@
                         <androidx.cardview.widget.CardView
                             android:id="@+id/card_contests"
                             style="@style/homeItem"
-                            app:cardElevation="8dp"
-                            app:cardCornerRadius="10dp"
                             android:onClick="@{clickListener::onContestsClicked}"
-                            android:visibility="gone">
+                            android:visibility="gone"
+                            app:cardCornerRadius="10dp"
+                            app:cardElevation="8dp">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -347,9 +353,9 @@
                                     android:src="@drawable/ic_contests" />
 
                                 <TextView
+                                    style="@style/homeItemsText"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    style="@style/homeItemsText"
                                     android:text="@string/contests_label"
                                     android:textAlignment="center" />
 
@@ -360,10 +366,10 @@
                         <androidx.cardview.widget.CardView
                             android:id="@+id/card_books"
                             style="@style/homeItem"
-                            app:cardElevation="8dp"
-                            app:cardCornerRadius="10dp"
                             android:onClick="@{clickListener::onBooksClicked}"
-                            android:visibility="gone">
+                            android:visibility="gone"
+                            app:cardCornerRadius="10dp"
+                            app:cardElevation="8dp">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -377,9 +383,9 @@
                                     android:src="@drawable/ic_books" />
 
                                 <TextView
+                                    style="@style/homeItemsText"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    style="@style/homeItemsText"
                                     android:text="@string/books_label"
                                     android:textAlignment="center" />
 
@@ -388,13 +394,13 @@
                         </androidx.cardview.widget.CardView>
 
 
-
                     </GridLayout>
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
         </RelativeLayout>
+    </ScrollView>
 
 </layout>
 

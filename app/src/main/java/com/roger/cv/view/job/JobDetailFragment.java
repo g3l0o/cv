@@ -57,7 +57,7 @@ public class JobDetailFragment extends Fragment {
     private void bindJobData(Job job){
         ((MainActivity) getActivity()).setToolbarTitle(job.getName());
         binding.setJob(job);
-        binding.textJobDescription.setText(Html.fromHtml(job.description, Html.FROM_HTML_MODE_COMPACT));
+        binding.textJobDescription.setText(Html.fromHtml(job.description, Html.FROM_HTML_MODE_LEGACY));
     }
 
     private void observeViewModel() {

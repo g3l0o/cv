@@ -44,6 +44,7 @@ public class FactsViewModel extends AndroidViewModel {
     }
 
     private void updateFactsList(List<Fact> factList){
+        factList.addAll(factList);
         facts.setValue(factList);
         isError.setValue(false);
         isLoading.setValue(false);
