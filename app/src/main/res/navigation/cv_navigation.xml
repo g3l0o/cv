@@ -70,7 +70,7 @@
         tools:layout="@layout/fragment_courses" />
     <fragment
         android:id="@+id/certificationsFragment"
-        android:name="com.roger.cv.view.CertificationsFragment"
+        android:name="com.roger.cv.view.certificate.CertificatesFragment"
         android:label="@string/certifications_label"
         tools:layout="@layout/fragment_certifications" />
     <fragment
