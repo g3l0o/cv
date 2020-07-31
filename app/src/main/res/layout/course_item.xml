@@ -50,7 +50,7 @@
                     style="@style/subtitleText"
                     android:text="@{course.provider}"
                     tools:text="@tools:sample/cities"/>
-                
+
             </LinearLayout>
 
         </LinearLayout>
