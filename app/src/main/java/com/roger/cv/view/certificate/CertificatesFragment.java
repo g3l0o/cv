@@ -1,4 +1,4 @@
-package com.roger.cv.view;
+package com.roger.cv.view.certificate;
 
 import android.os.Bundle;
 
@@ -11,10 +11,10 @@ import android.view.ViewGroup;
 import com.roger.cv.R;
 
 
-public class CertificationsFragment extends Fragment {
+public class CertificatesFragment extends Fragment {
 
 
-    public CertificationsFragment() {
+    public CertificatesFragment() {
         // Required empty public constructor
     }
 
