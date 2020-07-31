@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.roger.cv.R;
 import com.roger.cv.databinding.FragmentProfileBinding;
 import com.roger.cv.model.Information;
+import com.roger.cv.util.AnalyticsUtil;
 import com.roger.cv.viewmodel.ProfileViewModel;
 
 
@@ -28,6 +29,8 @@ public class ProfileFragment extends Fragment implements ProfileClickListener{
     private ProfileViewModel viewModel;
     private FragmentProfileBinding binding;
 
+    private AnalyticsUtil analyticsUtil;
+
     public ProfileFragment() {
         // Required empty public constructor
     }
@@ -35,6 +38,9 @@ public class ProfileFragment extends Fragment implements ProfileClickListener{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        analyticsUtil = AnalyticsUtil.getInstance(getContext());
+
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_profile, container, false);
         return binding.getRoot();
@@ -61,6 +67,9 @@ public class ProfileFragment extends Fragment implements ProfileClickListener{
 
     @Override
     public void onClickWhatsApp(View v) {
+
+        analyticsUtil.logEventViewItem("profile_whatsapp_item");
+
         String url = binding.getInformation().getWhatsApp();
         Intent i = new Intent(Intent.ACTION_VIEW);
         i.setData(Uri.parse(url));

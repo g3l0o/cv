@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import com.roger.cv.R;
 import com.roger.cv.databinding.FragmentFactsBinding;
 import com.roger.cv.model.Fact;
+import com.roger.cv.util.AnalyticsUtil;
 import com.roger.cv.util.Util;
 import com.roger.cv.viewmodel.FactsViewModel;
 
@@ -54,6 +55,7 @@ public class FactsFragment extends Fragment implements FactClickListener{
 
     @Override
     public void onRandomClicked(View v) {
+        AnalyticsUtil.getInstance(v.getContext()).logEventViewItem("facts_button_pushed");
         getNewRandomFact();
     }
 

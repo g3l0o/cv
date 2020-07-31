@@ -21,6 +21,7 @@ import android.widget.TextView;
 import com.roger.cv.R;
 import com.roger.cv.databinding.FragmentHomeBinding;
 import com.roger.cv.model.Information;
+import com.roger.cv.util.AnalyticsUtil;
 import com.roger.cv.view.home.HomeClickListener;
 import com.roger.cv.viewmodel.HomeViewModel;
 
@@ -34,6 +35,8 @@ public class HomeFragment extends Fragment implements HomeClickListener {
 
     private long uuidProfile = 0L;
 
+    private AnalyticsUtil analyticsUtil;
+
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -41,6 +44,9 @@ public class HomeFragment extends Fragment implements HomeClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        analyticsUtil = AnalyticsUtil.getInstance(getContext());
+
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false);
         return binding.getRoot();
@@ -95,6 +101,9 @@ public class HomeFragment extends Fragment implements HomeClickListener {
 
     @Override
     public void onJobExperienceClicked(View v) {
+
+        analyticsUtil.logEventViewItem("home_job_item");
+
         NavDirections action = HomeFragmentDirections.actionExperience();
         Navigation.findNavController(v).navigate(action);
 
@@ -102,24 +111,36 @@ public class HomeFragment extends Fragment implements HomeClickListener {
 
     @Override
     public void onAcademyClicked(View v) {
+
+        analyticsUtil.logEventViewItem("home_academy_item");
+
         NavDirections action = HomeFragmentDirections.actionAcademy();
         Navigation.findNavController(v).navigate(action);
     }
 
     @Override
     public void onCoursesClicked(View v) {
+
+        analyticsUtil.logEventViewItem("home_courses_item");
+
         NavDirections action = HomeFragmentDirections.actionCourses();
         Navigation.findNavController(v).navigate(action);
     }
 
     @Override
     public void onCertificationsClicked(View v) {
+
+        analyticsUtil.logEventViewItem("home_certifications_item");
+
         NavDirections action = HomeFragmentDirections.actionCertifications();
         Navigation.findNavController(v).navigate(action);
     }
 
     @Override
     public void onTechnicalClicked(View v) {
+
+        analyticsUtil.logEventViewItem("home_technical_item");
+
         NavDirections action = HomeFragmentDirections.actionTechnical();
         Navigation.findNavController(v).navigate(action);
     }
@@ -141,12 +162,18 @@ public class HomeFragment extends Fragment implements HomeClickListener {
 
     @Override
     public void onFactsClicked(View v) {
+
+        analyticsUtil.logEventViewItem("home_facts_item");
+
         NavDirections action = HomeFragmentDirections.actionFacts();
         Navigation.findNavController(v).navigate(action);
     }
 
     @Override
     public void onProfileClicked(View v) {
+
+        analyticsUtil.logEventViewItem("home_profile_item");
+
         HomeFragmentDirections.ActionProfile action = HomeFragmentDirections.actionProfile();
         action.setProfileUuid(uuidProfile);
         Navigation.findNavController(v).navigate(action);
