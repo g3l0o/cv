@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.roger.cv.R;
 import com.roger.cv.databinding.JobItemBinding;
 import com.roger.cv.model.Job;
+import com.roger.cv.util.AnalyticsUtil;
 import com.roger.cv.view.JobClickListener;
 
 import androidx.databinding.DataBindingUtil;
@@ -56,8 +57,11 @@ public class JobListAdapter extends RecyclerView.Adapter<JobListAdapter.JobViewH
 
     @Override
     public void onJobClicked(View v) {
+
         String uuidString = ((TextView) v.findViewById(R.id.text_jobId)).getText().toString();
         long uuid = Long.parseLong(uuidString);
+
+        AnalyticsUtil.getInstance(v.getContext()).logEventViewItem(uuidString);
 
         JobListFragmentDirections.ActionJobDetail action = JobListFragmentDirections.actionJobDetail();
         action.setJobUuid(uuid);

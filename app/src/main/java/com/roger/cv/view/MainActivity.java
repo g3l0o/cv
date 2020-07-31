@@ -10,7 +10,9 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.roger.cv.R;
+import com.roger.cv.util.AnalyticsUtil;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,6 +22,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        AnalyticsUtil util = AnalyticsUtil.getInstance(this);
+        util.logEventOpenApp();
 
         navController = Navigation.findNavController(this, R.id.navHostFragment);
         NavigationUI.setupActionBarWithNavController(this, navController);
