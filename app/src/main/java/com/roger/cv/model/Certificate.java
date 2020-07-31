@@ -1,5 +1,12 @@
 package com.roger.cv.model;
 
+import android.content.res.Resources;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Certificate {
     String date;
     String logo;
@@ -18,6 +25,23 @@ public class Certificate {
 
     public String getDate() {
         return date;
+    }
+
+    public String getExpeditedDate() {
+        String expedited = "Expedición: ";
+        String showDatePattern = "MMMM yyyy";
+        String fireBaseDatePattern = "yyyy/MM/dd";
+
+        StringBuilder expeditedDate = new StringBuilder();
+        DateFormat dateFormat = new SimpleDateFormat(showDatePattern);
+
+        try {
+            Date date = new SimpleDateFormat(fireBaseDatePattern).parse(getDate());
+            expeditedDate.append(expedited).append(dateFormat.format(date));
+        }catch (ParseException e){
+            e.printStackTrace();
+        }
+        return expeditedDate.toString();
     }
 
     public void setDate(String date) {

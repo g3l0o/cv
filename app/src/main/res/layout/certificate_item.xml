@@ -38,8 +38,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="2.5dp"
-                    android:textAlignment="center"
-                    style="@style/titleText"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorPrimary_text"
                     android:text="@{certificate.name}"
                     tools:text="@tools:sample/full_names"/>
 
@@ -56,8 +56,8 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="2.5dp"
                     style="@style/subtitleText"
-                    android:text="@{certificate.date}"
-                    tools:text="@tools:sample/cities"/>
+                    android:text="@{certificate.expeditedDate}"
+                    tools:text="@tools:sample/date/ddmmyy"/>
 
             </LinearLayout>
 
