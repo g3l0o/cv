@@ -108,7 +108,8 @@ public class HomeFragment extends Fragment implements HomeClickListener {
 
     @Override
     public void onCoursesClicked(View v) {
-
+        NavDirections action = HomeFragmentDirections.actionCourses();
+        Navigation.findNavController(v).navigate(action);
     }
 
     @Override
