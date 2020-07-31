@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.ui.NavigationUI;
 
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,8 +55,9 @@ public class JobDetailFragment extends Fragment {
     }
 
     private void bindJobData(Job job){
-        binding.setJob(job);
         ((MainActivity) getActivity()).setToolbarTitle(job.getName());
+        binding.setJob(job);
+        binding.textJobDescription.setText(Html.fromHtml(job.description, Html.FROM_HTML_MODE_COMPACT));
     }
 
     private void observeViewModel() {
