@@ -65,7 +65,7 @@
         tools:layout="@layout/fragment_academy" />
     <fragment
         android:id="@+id/coursesFragment"
-        android:name="com.roger.cv.view.CoursesFragment"
+        android:name="com.roger.cv.view.course.CoursesFragment"
         android:label="@string/courses_label"
         tools:layout="@layout/fragment_courses" />
     <fragment
